@@ -84,18 +84,20 @@ exports.updateOrder = catchAsyncErrors( async (req, res, next) => {
         return next(new ErrorHander("Đơn hàng không tồn tại", 404));
     }
 
-    if(order.orderStatus === "Delivered"){
+    if(order.orderStatus === "Đã nhận hàng"){
         return next( new ErrorHander('Đơn hàng này đã giao xong', 400))
     }
 
-    order.orderItems.forEach( async (order) => {
-        await updateStock(order.product, order.quantity)
-    })
+    if(req.body.status === 'Đang giao hàng') {
+        order.orderItems.forEach( async (order) => {
+            await updateStock(order.product, order.quantity)
+        })
+    }
 
     order.orderStatus = req.body.status
     order.deliveredAt = Date.now()
 
-    if(req.body.status === 'Delivered'){
+    if(req.body.status === 'Đã nhận hàng'){
         order.deliveredAt = Date.now()
     }
 

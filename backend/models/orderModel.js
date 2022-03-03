@@ -6,13 +6,9 @@ const orderSchema = new mongoose.Schema({
             type: String,
             required: true,
         },
-        district: {
-        type: String,
-        required: true,
-        },
-        city: {
-        type: String,
-        required: true,
+        state: {
+            type: String,
+            required: true,
         },
         country: {
         type: String,
@@ -86,7 +82,7 @@ const orderSchema = new mongoose.Schema({
     orderStatus: {
         type: String,
         required: true,
-        default: "Processing",
+        default: "Đang xử lý",
     },
     deliveredAt: Date,
     createdAt: {

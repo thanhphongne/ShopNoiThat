@@ -10,6 +10,10 @@ const productSchema = mongoose.Schema({
         type: String,
         required: [true, "Nhập mô tả sản phẩm"]
     },
+    priceIn: {
+        type: Number,
+        default: 0
+    },
     price: {
         type: Number,
         default: 0
@@ -58,6 +62,9 @@ const productSchema = mongoose.Schema({
             name:{
                 type: String,
                 required: true
+            },
+            avatar:{
+                type: String
             },
             rating: {
                 type: Number,

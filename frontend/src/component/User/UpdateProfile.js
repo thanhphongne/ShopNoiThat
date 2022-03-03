@@ -58,7 +58,7 @@ const UpdateProfile = ({ history }) => {
         }
 
         if (isUpdated) {
-        alert.success("Profile Updated Successfully");
+        alert.success("Cập nhật thông tin thành công");
         dispatch(loadUser());
 
         history.push("/account");

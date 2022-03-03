@@ -172,14 +172,14 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
     sendToken(user, 200, res)
 })
 
-//update user profile
+// update User Profile
 exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
         email: req.body.email,
-        };
+    };
 
-        if (req.body.avatar !== "") {
+    if (!req.body.avatar) {
         const user = await User.findById(req.user.id);
 
         const imageId = user.avatar.public_id;
@@ -199,9 +199,9 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     }
 
     const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
-    new: true,
-    runValidators: true,
-    useFindAndModify: false,
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
     });
 
     res.status(200).json({
@@ -268,6 +268,10 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
     if(!user) {
         return next(new ErrorHander(`Không tìm thấy người dùng nào với id: ${req.params.id}`));
     }
+
+    const imageId = user.avatar.public_id;
+
+    await cloudinary.v2.uploader.destroy(imageId)
 
     await user.remove()
 

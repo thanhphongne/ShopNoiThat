@@ -158,7 +158,7 @@ const LoginSignUp = ({ history, location }) => {
                                 </Link>
                                 <input
                                     type="submit"
-                                    value="Login"
+                                    value="Đăng nhập"
                                     className="loginBtn"
                                 />
                             </form>
@@ -216,7 +216,7 @@ const LoginSignUp = ({ history, location }) => {
                                 </div>
                                 <input
                                     type="submit"
-                                    value="Register"
+                                    value="Đăng ký"
                                     className="signUpBtn"
                                 />
                             </form>

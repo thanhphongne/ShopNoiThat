@@ -35,7 +35,7 @@ const Home = () => {
 
                         <a href="#container">
                             <button>
-                                Scroll <CgMouse />
+                                Click Me <CgMouse />
                             </button>
                         </a>
                     </div>
