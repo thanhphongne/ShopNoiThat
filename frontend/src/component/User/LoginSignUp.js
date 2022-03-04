@@ -172,7 +172,7 @@ const LoginSignUp = ({ history, location }) => {
                                     <FaceIcon />
                                     <input
                                         type="text"
-                                        placeholder="Name"
+                                        placeholder="Họ Tên"
                                         required
                                         name="name"
                                         value={name}
@@ -194,7 +194,7 @@ const LoginSignUp = ({ history, location }) => {
                                     <LockOpenIcon />
                                     <input
                                         type="password"
-                                        placeholder="Password"
+                                        placeholder="Mật khẩu"
                                         required
                                         name="password"
                                         value={password}
