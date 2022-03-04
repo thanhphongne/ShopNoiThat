@@ -81,7 +81,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
     await user.save({ validateBeforeSave: false})
 
-    const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`
+    const resetPasswordUrl = `${req.protocol}://${req.get('host')}/password/reset/${resetToken}`
 
     const message = `Chọn đường dẫn bên dưới để đặt lại mật khẩu của bạn:- \n\n ${resetPasswordUrl} \n\n
         Nếu bạn không có yêu cầu đặt lại mật khẩu thì hãy bỏ qua email này!`;
