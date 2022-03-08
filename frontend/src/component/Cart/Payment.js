@@ -117,7 +117,7 @@ import { createOrder, clearErrors } from "../../actions/orderAction";
         <CheckoutSteps activeStep={2} />
         <div className="paymentContainer">
             <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-            <Typography>Thông tin</Typography>
+            <Typography>Thông tin thẻ</Typography>
             <div>
                 <CreditCardIcon />
                 <CardNumberElement className="paymentInput" />
