@@ -37,7 +37,11 @@
     color: white;
     transition: all 0.5s;
 }
-
+.micro {
+    width: 50px;
+    cursor: pointer;
+    transform: all 0.5s;
+}
 .searchBox > input[type='submit']:hover {
     background-color: rgb(230, 6, 6);
 }
