@@ -8,7 +8,6 @@ import SpeechRecognition, {
 
 const Search = ({ history }) => {
     const [keyword, setKeyword] = useState('Nhập tên sản phẩm');
-    const [isMicOn, setIsMicOn] = useState(false)
     const searchSubmitHandler = (e) => {
         e.preventDefault();
         if (keyword.trim()) {
@@ -17,16 +16,18 @@ const Search = ({ history }) => {
             history.push('/products');
         }
     };
-    const { transcript } = useSpeechRecognition();
-
+    
+    const { transcript, listening} = useSpeechRecognition();
+    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+        return null;
+    }
     const microClickHandler = () => {
         SpeechRecognition.startListening({ language: 'vi-VI' });
-        setIsMicOn(true)
+        
     }
     const microOffClickHandler = () => {
         SpeechRecognition.stopListening();
         setKeyword(transcript);
-        setIsMicOn(false)
     }
 
     return (
@@ -38,7 +39,7 @@ const Search = ({ history }) => {
                     value={keyword}
                     onChange={(e) => setKeyword(e.target.value)}
                 />
-                {!isMicOn ? 
+                {!listening ? 
                 <FaMicrophone className="micro" onClick={microClickHandler}/> : 
                 <FaMicrophoneSlash className="micro" onClick={microOffClickHandler}/>
                 }

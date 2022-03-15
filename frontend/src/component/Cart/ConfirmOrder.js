@@ -5,8 +5,14 @@ import MetaData from "../layout/MetaData";
 import "./ConfirmOrder.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
+import { createOrder } from "../../actions/orderAction";
+import { useDispatch } from "react-redux";
+import { useAlert } from "react-alert";
+
 
 const ConfirmOrder = ({ history }) => {
+    const dispatch = useDispatch();
+    const alert = useAlert();
     const { shippingInfo, cartItems } = useSelector((state) => state.cart);
     const { user } = useSelector((state) => state.user);
 
@@ -27,11 +33,28 @@ const ConfirmOrder = ({ history }) => {
         shippingCharges,
         totalPrice,
         };
-
         sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
         history.push("/process/payment");
     };
+    const proceedToCreateOrder = () => {
+        const order = {
+            shippingInfo,
+            orderItems: cartItems,
+            itemsPrice: subtotal,
+            shippingPrice: shippingCharges,
+            totalPrice: totalPrice,
+        };
+        order.paymentInfo = {
+            id: 'NotPaid',
+            status: "Thanh toán khi nhận hàng",
+        };
+
+        dispatch(createOrder(order));
+        alert.success("Mua hàng thành công");
+
+        history.push("/success");
+    }
 
     return (
         <Fragment>
@@ -97,7 +120,8 @@ const ConfirmOrder = ({ history }) => {
                 <span>{totalPrice.toLocaleString()} VND</span>
                 </div>
 
-                <button onClick={proceedToPayment}>Thanh toán</button>
+                <button onClick={proceedToPayment}>Thanh toán ngay</button>
+                <button onClick={proceedToCreateOrder} style={{"margin-top": "10px"}}>Thanh toán khi nhận hàng</button>
             </div>
             </div>
         </div>

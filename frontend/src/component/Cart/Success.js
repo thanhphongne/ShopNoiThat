@@ -10,7 +10,7 @@ const OrderSuccess = () => {
         <div className="orderSuccess">
         <CheckCircleIcon />
 
-        <Typography>Thanh toán thành công</Typography>
+        <Typography>Mua hàng thành công</Typography>
         <Link to="/orders">Xem đơn hàng</Link>
         </div>
     );

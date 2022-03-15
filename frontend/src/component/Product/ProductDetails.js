@@ -9,6 +9,7 @@ import { useAlert } from 'react-alert';
 import MetaData from '../layout/MetaData';
 import {addItemsToCart} from '../../actions/cartAction'
 import { Rating } from "@material-ui/lab";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import {
     Dialog,
     DialogActions,
@@ -16,6 +17,7 @@ import {
     DialogTitle,
     Button,
 } from '@material-ui/core'
+
 import { NEW_REVIEW_RESET } from '../../constants/productConstants';
 
 const ProductDetails = ({ match }) => {
@@ -105,17 +107,19 @@ const ProductDetails = ({ match }) => {
                     <MetaData title={`${product.name} -- Nội Thất Cần Thơ`} />
                     <div className="ProductDetails">
                         <div>
-                            <Carousel>
-                                {product.images &&
-                                    product.images.map((item, i) => (
-                                        <img
-                                            className="CarouselImage"
-                                            key={item.url}
-                                            src={item.url}
-                                            alt={`${i} Slide`}
-                                        />
-                                    ))}
-                            </Carousel>
+                            <TransformWrapper>
+                                <TransformComponent><Carousel>
+                                    {product.images &&
+                                        product.images.map((item, i) => (
+                                            <img
+                                                className="CarouselImage"
+                                                key={item.url}
+                                                src={item.url}
+                                                alt={`${i} Slide`}
+                                            />
+                                        ))}</Carousel>
+                                </TransformComponent>
+                            </TransformWrapper>
                         </div>
 
                         <div>
@@ -212,6 +216,7 @@ const ProductDetails = ({ match }) => {
                     ) : (
                         <p className="noReviews">Chưa có đánh giá nào</p>
                     )}
+                    
                 </Fragment>
             )}
         </Fragment>
