@@ -111,6 +111,7 @@ import {
                     <select value={role} onChange={(e) => setRole(e.target.value)}>
                     <option value="">Quyền</option>
                     <option value="admin">Quản trị</option>
+                    <option value="shipper">Người giao hàng</option>
                     <option value="user">Người dùng</option>
                     </select>
                 </div>

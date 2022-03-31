@@ -1,6 +1,7 @@
 const express = require('express')
 const { registerUser, 
         loginUser, 
+        loginAdmin,
         logout, 
         forgotPassword, 
         resetPassword, 
@@ -20,6 +21,7 @@ const router = express.Router()
 router.route('/register').post(registerUser)
 
 router.route('/login').post(loginUser)
+router.route('/admin/login').post(loginAdmin)
 
 router.route('/password/forgot').post(forgotPassword)
 

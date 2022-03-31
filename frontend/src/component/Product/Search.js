@@ -7,9 +7,17 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 
 const Search = ({ history }) => {
-    const [keyword, setKeyword] = useState('Nhập tên sản phẩm');
+    const [keyword, setKeyword] = useState('');
+    console.log(keyword);
+    const commands = [
+        {
+            command: ["*", "Tìm *", "Tìm kiếm *"],
+            callback: (product) => setKeyword(product),
+        },
+    ];
+    const { transcript, listening} = useSpeechRecognition({ commands });
     const searchSubmitHandler = (e) => {
-        e.preventDefault();
+        e && e.preventDefault();
         if (keyword.trim()) {
             history.push(`/products/${keyword}`);
         } else {
@@ -17,17 +25,18 @@ const Search = ({ history }) => {
         }
     };
     
-    const { transcript, listening} = useSpeechRecognition();
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
         return null;
     }
     const microClickHandler = () => {
         SpeechRecognition.startListening({ language: 'vi-VI' });
-        
     }
     const microOffClickHandler = () => {
         SpeechRecognition.stopListening();
-        setKeyword(transcript);
+    }
+    
+    if( !listening && transcript && keyword && commands) {
+        searchSubmitHandler();
     }
 
     return (
@@ -36,8 +45,9 @@ const Search = ({ history }) => {
             <form className="searchBox" onSubmit={searchSubmitHandler}>
                 <input
                     type="text"
-                    value={keyword}
-                    onChange={(e) => setKeyword(e.target.value)}
+                    placeholder="Nhập tên sản phẩm"
+                    value={transcript ? transcript : keyword}
+                    onChange={(e) => setKeyword(e.target.value) }
                 />
                 {!listening ? 
                 <FaMicrophone className="micro" onClick={microClickHandler}/> : 
