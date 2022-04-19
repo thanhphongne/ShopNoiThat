@@ -15,23 +15,40 @@ const Shipping = ({ history }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const { shippingInfo } = useSelector((state) => state.cart);
+    const {user} = useSelector((state) => state.user);
+    console.log(user.shippingInfo)
+    const [isNew, setIsNew] = useState(true);
     const [address, setAddress] = useState(shippingInfo.address);
     const [state, setState] = useState(shippingInfo.state);
     const [country, setCountry] = useState(shippingInfo.country);
     const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+    
+    
 
     const shippingSubmit = (e) => {
         e.preventDefault();
 
+        setIsNew(true);
+        
         if (phoneNo.length < 10 ) {
         alert.error("Số điện thoại không đúng");
         return;
         }
         dispatch(
-        saveShippingInfo({ address, state, country, phoneNo })
+        saveShippingInfo({ address, state, country, phoneNo, isNew })
         );
         history.push("/order/confirm");
     };
+    
+    
+    const handleOldAdress = ({shipping}) => {
+        console.log(shipping);
+        setIsNew(false);
+        setAddress(shipping.address);
+        setState(shipping.state);
+        setCountry(shipping.country);
+        setPhoneNo(shipping.phoneNo);
+    }
 
     return (
         <Fragment>
@@ -42,13 +59,25 @@ const Shipping = ({ history }) => {
         <div className="shippingContainer">
             <div className="shippingBox">
             <h2 className="shippingHeading">Thông tin nhận hàng</h2>
+            
+            <h3>Thông tin nhận hàng đã lưu:</h3>
 
+            {user.shippingInfo ?
+                <div className="oldAddress" >
+                    {user.shippingInfo.map((shipping) => (
+                        <div key={shipping._id}>
+                        <p>{shipping.phoneNo}, {shipping.address}, {shipping.state}, {shipping.country}</p>
+                        <span><button onClick={() => handleOldAdress({shipping})}>Chọn</button></span>
+                        </div>
+                    ))}
+                </div> : <h4>Không có thông tin nào được lưu</h4>
+            }
             <form
                 className="shippingForm"
                 encType="multipart/form-data"
                 onSubmit={shippingSubmit}
             >
-
+            
                 <div>
                 <PhoneIcon />
                 <input
@@ -60,7 +89,7 @@ const Shipping = ({ history }) => {
                     size="10"
                 />
                 </div>
-
+            
                 <div>
                 <PublicIcon />
 

@@ -41,6 +41,22 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    shippingInfo: [
+        {
+            address: {
+                type: String,
+            },
+            state: {
+                type: String,
+            },
+            country: {
+            type: String,
+            },
+            phoneNo: {
+            type: String,
+            },
+        }
+    ],
 
     resetPasswordToken: String,
     resetPasswordExpire: Date,

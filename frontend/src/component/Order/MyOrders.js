@@ -68,10 +68,9 @@ const MyOrders = () => {
 
     orders &&
         orders.forEach((item, index) => {
-            
         rows.push({
             createdAt: String(item.createdAt).substr(0, 16),
-            id: item._id,
+            id: item._id.slice(-6).toUpperCase(),
             status: item.orderStatus,
             amount: item.totalPrice,
         });

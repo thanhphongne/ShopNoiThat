@@ -76,9 +76,7 @@ const Dashboard = () => {
                 <p>
                 Tổng Doanh Thu <br />{totalAmount.toLocaleString()} VND
                 </p>
-                <p>
-                Tổng Lợi Nhuận <br />Chưa hoàn thành VND
-                </p>
+                
             </div>
             <div className="dashboardSummaryBox2">
                 <Link to="/admin/products">

@@ -1,5 +1,6 @@
 const Order = require('../models/orderModel')
 const Product = require('../models/productModel')
+const User = require('../models/userModel')
 const ErrorHander = require('../utils/errorhander')
 const catchAsyncErrors = require('../middleware/catchAsyncErrors')
 
@@ -24,10 +25,13 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
         paidAt: Date.now(),
         user: req.user._id
     })
+    if(shippingInfo.isNew) {
+        const user = await User.findByIdAndUpdate(req.user._id, { $push:{shippingInfo: shippingInfo} })
+    }
 
     res.status(201).json({
         success: true,
-        order,
+        order
     })
 })
 

@@ -50,13 +50,13 @@ import {
     }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
     const columns = [
-        { field: "id", headerName: "Mã đơn hàng", minWidth: 300, flex: 1 },
+        { field: "id", headerName: "Mã đơn hàng", minWidth: 300, flex: 0.5 },
 
         {
         field: "status",
         headerName: "Trạng thái",
         minWidth: 150,
-        flex: 0.5,
+        flex: 0.3,
         cellClassName: (params) => {
             return params.getValue(params.id, "status") === "Đã nhận hàng"
             ? "greenColor"
@@ -81,7 +81,7 @@ import {
 
         {
         field: "actions",
-        flex: 0.3,
+        flex: 0.5,
         headerName: "Hành động",
         minWidth: 150,
         type: "number",
@@ -104,7 +104,7 @@ import {
             );
         },
         },
-    ];
+    ]; 
 
     const rows = [];
 
