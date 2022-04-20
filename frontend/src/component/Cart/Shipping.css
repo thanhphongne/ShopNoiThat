@@ -10,7 +10,6 @@
 .shippingBox {
     background-color: white;
     width: 30vw;
-    height: 90vh;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -44,14 +43,12 @@ h3 {
     border: none;
     background-color: tomato;
     color: white;
-    font: 300 1vmax "Roboto";
     width: 100%;
-    height: 90%;
-    padding: 1vmax;
+    height: 95%;
     cursor: pointer;
     transition: all 0.5s;
     outline: none;
-    border-radius:30%;
+    border-radius:5px;
     
 }
 .shippingForm{
@@ -61,7 +58,7 @@ h3 {
     margin: auto;
     padding: 2vmax;
     justify-content: space-evenly;
-    height: 60%;
+    height: 80%;
     transition: all 0.5s;
 }
 

@@ -51,7 +51,27 @@ exports.getSingleOrder = catchAsyncErrors( async (req, res, next) => {
         order
     })
 })
+//cancel order 
+exports.cancelOrder = catchAsyncErrors( async (req, res, next) => {
+    const order = await Order.findById(req.params.id).populate(
+        "user",
+        "name email"
+    )
 
+    if (!order) {
+        return next(new ErrorHander("Đơn hàng không tồn tại", 404));
+    }
+
+    if(order.orderStatus === 'Chờ xác nhận') {
+        order.orderStatus = 'Đã hủy'
+        order.deliveredAt = Date.now()
+    }
+    
+    await order.save({ validateBeforeSave: false })
+    res.status(200).json({
+        success: true
+    })
+})
 // get history orders
 exports.myOrders = catchAsyncErrors( async (req, res, next) => {
     const orders = await Order.find({user: req.user._id})

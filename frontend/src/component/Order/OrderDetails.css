@@ -68,7 +68,24 @@
     font: 100 1vmax "Roboto";
     color: #5e5e5e;
 }
-
+.detroyOrder{
+    display: flex;
+    justify-content: center;
+}
+.detroyOrder button{
+    width: 20vh;
+    height: 5vh;
+    background-color: tomato;
+    font: 400 1vmax "Roboto" ;
+    color: white;
+    border-radius: 20px;
+    border: none;
+}
+.detroyOrder button:hover {
+    background-color: rgb(252, 81, 50);
+    transform: translateY(-5px);
+    transition-duration: 0.5s;
+}
 @media screen and (max-width: 600px) {
     .orderDetailsContainer > p {
     font: 400 6vw "Roboto";

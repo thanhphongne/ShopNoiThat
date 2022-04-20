@@ -7,21 +7,55 @@ import { Typography } from "@material-ui/core";
 import { getOrderDetails, clearErrors } from "../../actions/orderAction";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import OrderStep from "./OrderStep";
+import { cancelOrder } from "../../actions/orderAction";
+import { CANCEL_ORDER_RESET } from "../../constants/orderConstants";
 
-const OrderDetails = ({ match }) => {
+const OrderDetails = ({ match ,  history }) => {
     const { order, error, loading } = useSelector((state) => state.orderDetails);
+    const { error: cancelError, isCanceled } = useSelector((state) => state.order);
 
     const dispatch = useDispatch();
     const alert = useAlert();
+    const cancelOrderHandler = (id) => {
+        dispatch(cancelOrder(id));
+    };
+        console.log(match.params.id)
+    const numStep = (status) => {
+        switch (status) {
+            case "Chờ xác nhận":
+                return 0;
+            case "Chờ lấy hàng":
+                return 1;
+            case "Đang giao hàng":
+                return 2;
+            case "Đã nhận hàng":
+                return 3;
+            case "Đã hủy":
+                return 4;
+            default:
+                break;
+        }
+    }
 
     useEffect(() => {
         if (error) {
         alert.error(error);
         dispatch(clearErrors());
         }
+        if (cancelError) {
+        alert.error(cancelError);
+        dispatch(clearErrors());
+        }
+    
+        if (isCanceled) {
+        alert.success("Đã hủy đơn hàng");
+        history.push("/orders");
+        dispatch({ type: CANCEL_ORDER_RESET });
+        }
 
         dispatch(getOrderDetails(match.params.id));
-    }, [dispatch, alert, error, match.params.id]);
+    }, [dispatch, alert, error, match.params.id, cancelError, isCanceled, history]);
     return (
         <Fragment>
         {loading ? (
@@ -30,9 +64,10 @@ const OrderDetails = ({ match }) => {
             <Fragment>
             <MetaData title="Thông tin đơn hàng" />
             <div className="orderDetailsPage">
-                <div className="orderDetailsContainer">
+            <div className="orderDetailsContainer">
+            <OrderStep activeStep={numStep(order.orderStatus)}/>
                 <Typography component="h1">
-                    Đơn hàng #{order && order._id}
+                Đơn hàng #{order && order._id}
                 </Typography>
                 <Typography>Thông tin nhận hàng</Typography>
                 <div className="orderDetailsContainerBox">
@@ -114,6 +149,13 @@ const OrderDetails = ({ match }) => {
                     ))}
                 </div>
                 </div>
+                {
+                    order.orderStatus === "Chờ xác nhận" && (
+                        <div className="detroyOrder">
+                            <button onClick={() => cancelOrderHandler(match.params.id)}>Hủy đơn hàng</button>
+                        </div>
+                    )
+                }
             </div>
             </Fragment>
         )}

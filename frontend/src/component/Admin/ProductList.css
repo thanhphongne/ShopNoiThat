@@ -46,7 +46,59 @@
 .MuiDataGrid-columnHeader div {
     color: rgb(255, 255, 255);
 }
+.orders {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    font: 400 1.2vmax "Roboto";
 
+}
+.order{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin: 10px;
+    border-top: 20px solid tomato;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 20vh;
+
+}
+.orderHeading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font: 400 1.2vmax "Roboto";
+    position: sticky;
+    top: 20px;
+    height: 40px;
+    background-color: white;
+}
+.orderHeading div:hover {
+    color: tomato;
+    transform: translateY(-2px);
+}
+.orderProducts {
+    display: flex;
+    flex-direction: column;
+}
+.product {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.product a {
+    text-decoration: none;
+    color: #000;
+}
+.orderProducts img {
+    width: 5vmax;
+}
 @media screen and (max-width: 600px) {
     .productListTable div {
     font: 300 4vw "Roboto";

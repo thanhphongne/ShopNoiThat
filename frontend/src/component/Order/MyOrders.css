@@ -4,10 +4,9 @@
     padding: 0 7vmax;
     box-sizing: border-box;
     background-color: rgb(235, 235, 235);
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
-    height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -17,44 +16,67 @@
     font: 400 1.2vmax "Roboto";
     padding: 0.5vmax;
     box-sizing: border-box;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     transition: all 0.5s;
-    background-color: rgb(44, 44, 44);
+    background-color: rgb(5, 5, 5);
 }
+.orderList{
+    width: 100%;
+    margin-top: 20px;
+}
+.orders {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    font: 400 1.2vmax "Roboto";
 
-.myOrdersTable {
+}
+.order{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin: 10px;
+    border-top: 20px solid tomato;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 20vh;
+
+}
+.orderHeading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font: 400 1.2vmax "Roboto";
+    position: sticky;
+    top: 20px;
+    height: 40px;
     background-color: white;
 }
-
-.myOrdersTable div {
-    font: 300 1vmax "Roboto";
-    color: rgba(0, 0, 0, 0.678);
-    border: none;
-}
-
-.myOrdersTable a {
-    color: rgba(0, 0, 0, 0.527);
-    transition: all 0.5s;
-}
-
-.myOrdersTable a:hover {
+.orderHeading div:hover {
     color: tomato;
+    transform: translateY(-2px);
 }
-
-.MuiDataGrid-columnHeader {
-    background-color: tomato;
-    padding: 1vmax !important;
+.orderProducts {
+    display: flex;
+    flex-direction: column;
 }
-
-.MuiDataGrid-columnHeader div {
-    color: rgb(255, 255, 255);
-    font: 500 1.1vmax "Roboto" !important;
+.product {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
-
-.MuiDataGrid-iconSeparator {
-    display: none !important;
+.product a {
+    text-decoration: none;
+    color: #000;
 }
-
+.orderProducts img {
+    width: 5vmax;
+}
 @media screen and (max-width: 600px) {
     .myOrdersPage {
     padding: 0;
@@ -65,16 +87,14 @@
     font: 400 2.2vmax "Roboto";
     padding: 4vw;
     }
-
-    .myOrdersTable div {
-    font: 300 4vw "Roboto";
+    .order {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
+    .product{
+        display: flex;
+        flex-direction: column;
 
-    .MuiDataGrid-columnHeader {
-    padding: 20px !important;
-    }
-
-    .MuiDataGrid-columnHeader div {
-    font: 500 5vw "Roboto" !important;
     }
 }

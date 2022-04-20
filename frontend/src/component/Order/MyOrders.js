@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import React, { Fragment, useEffect, useState } from "react";
 import "./MyOrders.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
@@ -17,65 +16,7 @@ const MyOrders = () => {
 
     const { loading, error, orders } = useSelector((state) => state.myOrders);
     const { user } = useSelector((state) => state.user);
-
-    const columns = [
-        { field: "id", headerName: "Mã đơn hàng", minWidth: 300, flex: 0.5 },
-
-        {
-        field: "status",
-        headerName: "Trạng thái",
-        minWidth: 100,
-        flex: 0.5,
-        cellClassName: (params) => {
-            return params.getValue(params.id, "status") === "Đã nhận hàng"
-            ? "greenColor"
-            : "redColor";
-        },
-        },
-        {
-        field: "createdAt",
-        headerName: "Ngày tạo",
-        type: "date",
-        minWidth: 100,
-        flex: 0.3,
-        },
-
-        {
-        field: "amount",
-        headerName: "Giá",
-        type: "number",
-        minWidth: 100,
-        flex: 0.3,
-        },
-
-        {
-        field: "actions",
-        flex: 0.3,
-        headerName: "Chi tiết",
-        minWidth: 150,
-        type: "number",
-        sortable: false,
-        renderCell: (params) => {
-            return (
-            <Link to={`/order/${params.getValue(params.id, "id")}`}>
-                <LaunchIcon />
-            </Link>
-            );
-        },
-        },
-    ];
-    const rows = [];
-
-    orders &&
-        orders.forEach((item, index) => {
-        rows.push({
-            createdAt: String(item.createdAt).substr(0, 16),
-            id: item._id.slice(-6).toUpperCase(),
-            status: item.orderStatus,
-            amount: item.totalPrice,
-        });
-        });
-
+    const [status, setStatus] = useState('Chờ xác nhận');
     useEffect(() => {
         if (error) {
         alert.error(error);
@@ -93,16 +34,44 @@ const MyOrders = () => {
                 <Loader />
             ) : (
                 <div className="myOrdersPage">
-                <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    pageSize={10}
-                    disableSelectionOnClick
-                    className="myOrdersTable"
-                    autoHeight
-                />
-
                 <Typography id="myOrdersHeading">Khách hàng {user.name}</Typography>
+                <div className="orderList">
+                    <div className="orderHeading">
+                        <div onClick={()=> setStatus('Chờ xác nhận')}>Chờ xác nhận({orders && orders.filter( order => order.orderStatus === 'Chờ xác nhận').length})</div>
+                        <div onClick={()=> setStatus('Chờ lấy hàng')}>Chờ lấy hàng({orders && orders.filter( order => order.orderStatus === 'Chờ lấy hàng').length})</div>
+                        <div onClick={()=> setStatus('Đang giao hàng')}>Đang giao hàng({orders && orders.filter( order => order.orderStatus === 'Đang giao hàng').length})</div>
+                        <div onClick={()=> setStatus('Đã nhận hàng')}>Đã nhận hàng({orders && orders.filter( order => order.orderStatus === 'Đã nhận hàng').length})</div>
+                        <div onClick={()=> setStatus('Đã hủy')}>Đã hủy({orders && orders.filter( order => order.orderStatus === 'Đã hủy').length})</div>
+                    </div>
+                    {orders && (
+                        <div className="orders">
+                            { orders.filter( order => order.orderStatus === status).map(order => (
+                                <div className="order">
+                                    <div>{order._id}</div>
+                                    <div className="orderProducts">
+                                    {order.orderItems &&
+                                        order.orderItems.map((item) => (
+                                            <div key={item.product} className='product'>
+                                                <img src={item.image} alt="Product" />
+                                                <Link to={`/product/${item.product}`}>
+                                                    {item.name}
+                                                </Link>{" "}
+                                                <span>
+                                                    {item.quantity} X {item.price.toLocaleString()} VND ={" "}
+                                                    <b>{(item.price*item.quantity).toLocaleString()} VND</b>
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <span>{order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
+                                    <Link to={`/order/${order._id}`}>
+                                    <LaunchIcon/></Link>
+                                </div>
+                            ))
+                            }
+                        </div>
+                    )}
+                </div>
                 </div>
             )}
         </Fragment>

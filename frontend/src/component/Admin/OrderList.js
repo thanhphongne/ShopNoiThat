@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import React, { Fragment, useEffect, useState } from "react";
 import "./ProductList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,10 +12,10 @@ import {
     deleteOrder,
     getAllOrders,
     clearErrors,
-    } from "../../actions/orderAction";
-    import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
+} from "../../actions/orderAction";
+import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
-    const OrderList = ({ history }) => {
+const OrderList = ({ history }) => {
     const dispatch = useDispatch();
 
     const alert = useAlert();
@@ -28,6 +27,7 @@ import {
     const deleteOrderHandler = (id) => {
         dispatch(deleteOrder(id));
     };
+    const [status, setStatus] = useState('Chờ xác nhận')
 
     useEffect(() => {
         if (error) {
@@ -49,74 +49,7 @@ import {
         dispatch(getAllOrders());
     }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
-    const columns = [
-        { field: "id", headerName: "Mã đơn hàng", minWidth: 300, flex: 0.5 },
-
-        {
-        field: "status",
-        headerName: "Trạng thái",
-        minWidth: 150,
-        flex: 0.3,
-        cellClassName: (params) => {
-            return params.getValue(params.id, "status") === "Đã nhận hàng"
-            ? "greenColor"
-            : "redColor";
-        },
-        },
-        {
-        field: "createdAt",
-        headerName: "Ngày tạo",
-        type: "date",
-        minWidth: 150,
-        flex: 0.4,
-        },
-
-        {
-        field: "amount",
-        headerName: "Giá",
-        type: "number",
-        minWidth: 270,
-        flex: 0.5,
-        },
-
-        {
-        field: "actions",
-        flex: 0.5,
-        headerName: "Hành động",
-        minWidth: 150,
-        type: "number",
-        sortable: false,
-        renderCell: (params) => {
-            return (
-            <Fragment>
-                <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
-                <EditIcon />
-                </Link>
-
-                <Button
-                onClick={() =>
-                    deleteOrderHandler(params.getValue(params.id, "id"))
-                }
-                >
-                <DeleteIcon />
-                </Button>
-            </Fragment>
-            );
-        },
-        },
-    ]; 
-
-    const rows = [];
-
-    orders &&
-        orders.forEach((item) => {
-        rows.push({
-            id: item._id,
-            createdAt: String(item.createdAt).substr(0, 16),
-            amount: item.totalPrice,
-            status: item.orderStatus,
-        });
-        });
+    
 
     return (
         <Fragment>
@@ -127,14 +60,44 @@ import {
             <div className="productListContainer">
             <h1 id="productListHeading">Tất cả đơn hàng</h1>
 
-            <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSize={10}
-                disableSelectionOnClick
-                className="productListTable"
-                autoHeight
-            />
+            <div className="orderList">
+                    <div className="orderHeading">
+                        <div onClick={()=> setStatus('Chờ xác nhận')}>Chờ xác nhận({orders && orders.filter( order => order.orderStatus === 'Chờ xác nhận').length})</div>
+                        <div onClick={()=> setStatus('Chờ lấy hàng')}>Chờ lấy hàng({orders && orders.filter( order => order.orderStatus === 'Chờ lấy hàng').length})</div>
+                        <div onClick={()=> setStatus('Đang giao hàng')}>Đang giao hàng({orders && orders.filter( order => order.orderStatus === 'Đang giao hàng').length})</div>
+                        <div onClick={()=> setStatus('Đã nhận hàng')}>Đã nhận hàng({orders && orders.filter( order => order.orderStatus === 'Đã nhận hàng').length})</div>
+                        <div onClick={()=> setStatus('Đã hủy')}>Đã hủy({orders && orders.filter( order => order.orderStatus === 'Đã hủy').length})</div>
+                    </div>
+                    {orders && (
+                        <div className="orders">
+                            { orders.filter( order => order.orderStatus === status).map(order => (
+                                <div className="order">
+                                    <div>{order._id}</div>
+                                    <div className="orderProducts">
+                                    {order.orderItems &&
+                                        order.orderItems.map((item) => (
+                                            <div key={item.product} className='product'>
+                                                <img src={item.image} alt="Product" />
+                                                <Link to={`/product/${item.product}`}>
+                                                    {item.name}
+                                                </Link>{" "}
+                                                <span>
+                                                    {item.quantity} X {item.price.toLocaleString()} VND ={" "}
+                                                    <b>{(item.price*item.quantity).toLocaleString()} VND</b>
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <span>{order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
+                                    <Link to={`/admin/order/${order._id}`}>
+                                    <EditIcon/></Link>
+                                    <Button onClick={() => deleteOrderHandler(order._id)}><DeleteIcon/></Button>
+                                </div>
+                            ))
+                            }
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
         </Fragment>

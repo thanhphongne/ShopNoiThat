@@ -82,7 +82,7 @@ const orderSchema = new mongoose.Schema({
     orderStatus: {
         type: String,
         required: true,
-        default: "Đang xử lý",
+        default: "Chờ xác nhận",
     },
     deliveredAt: Date,
     createdAt: {

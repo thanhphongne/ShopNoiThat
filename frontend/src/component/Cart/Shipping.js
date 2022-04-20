@@ -16,19 +16,39 @@ const Shipping = ({ history }) => {
     const alert = useAlert();
     const { shippingInfo } = useSelector((state) => state.cart);
     const {user} = useSelector((state) => state.user);
-    console.log(user.shippingInfo)
-    const [isNew, setIsNew] = useState(true);
+    // console.log(user.shippingInfo)
+    const [isNew, setIsNew] = useState(false);
     const [address, setAddress] = useState(shippingInfo.address);
     const [state, setState] = useState(shippingInfo.state);
     const [country, setCountry] = useState(shippingInfo.country);
     const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
     
+    // console.log(isNew);
+    const handleSetPhoneNo = (e) => {
+        e.preventDefault();
+        setIsNew(true);
+        setPhoneNo(e.target.value);
+    }
+    
+    const handleSetState = (e) => {
+        e.preventDefault();
+        setIsNew(true);
+        setState(e.target.value);
+    }
+    const handleSetCountry = (e) => {
+        e.preventDefault();
+        setIsNew(true);
+        setCountry(e.target.value);
+    }
+    const handleSetAddress = (e) => {
+        e.preventDefault();
+        setIsNew(true);
+        setAddress(e.target.value);
+    }
     
 
     const shippingSubmit = (e) => {
         e.preventDefault();
-
-        setIsNew(true);
         
         if (phoneNo.length < 10 ) {
         alert.error("Số điện thoại không đúng");
@@ -42,7 +62,6 @@ const Shipping = ({ history }) => {
     
     
     const handleOldAdress = ({shipping}) => {
-        console.log(shipping);
         setIsNew(false);
         setAddress(shipping.address);
         setState(shipping.state);
@@ -85,7 +104,7 @@ const Shipping = ({ history }) => {
                     placeholder="Số điện thoại"
                     required
                     value={phoneNo}
-                    onChange={(e) => setPhoneNo(e.target.value)}
+                    onChange={(e) => handleSetPhoneNo(e)}
                     size="10"
                 />
                 </div>
@@ -96,7 +115,7 @@ const Shipping = ({ history }) => {
                 <select
                     required
                     value={country}
-                    onChange={(e) => setCountry(e.target.value)}
+                    onChange={(e) => handleSetCountry(e)}
                 >
                     <option value="">Quốc gia</option>
                     {Country &&
@@ -114,7 +133,7 @@ const Shipping = ({ history }) => {
 
                     <select
                     value={state}
-                    onChange={(e) => setState(e.target.value)}
+                    onChange={(e) => handleSetState(e)}
                     >
                     <option value="">Tỉnh</option>
                     {State &&
@@ -135,7 +154,7 @@ const Shipping = ({ history }) => {
                     placeholder="Địa chỉ"
                     required
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={(e) => handleSetAddress(e)}
                 />
                 </div>
                 <input

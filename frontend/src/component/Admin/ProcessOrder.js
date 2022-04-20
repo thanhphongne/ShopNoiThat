@@ -164,12 +164,12 @@ import {
                         <AccountTreeIcon />
                         <select onChange={(e) => setStatus(e.target.value)}>
                         <option value="">Hành động</option>
-                        {order.orderStatus === "Đang xử lý" && (
-                            <option value="Đang giao hàng">Đang giao hàng</option>
+                        {order.orderStatus === "Chờ xác nhận" && (
+                            <option value="Chờ lấy hàng">Chờ lấy hàng</option>
                         )}
 
-                        {order.orderStatus === "Đang giao hàng" && (
-                            <option value="Đã nhận hàng">Đã nhận hàng</option>
+                        {order.orderStatus === "Chờ lấy hàng" && (
+                            <option value="Đang giao hàng">Đang giao hàng</option>
                         )}
                         </select>
                     </div>
