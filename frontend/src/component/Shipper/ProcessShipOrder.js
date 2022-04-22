@@ -2,27 +2,23 @@ import React, { Fragment, useEffect, useState } from "react";
 import MetaData from "../layout/MetaData";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
-import SideBar from "./Sidebar";
 import {
     getOrderDetails,
     clearErrors,
-    updateOrder,
+    updateShipOrder,
 } from "../../actions/orderAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
-import PersonIcon from "@material-ui/icons/Person";
 import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
-import "./ProcessOrder.css";
+import "./ProcessShipOrder.css";
 import { getAllUsers } from "../../actions/userAction.js";
 
 const ProcessOrder = ({ history, match }) => {
     const { order, error, loading } = useSelector((state) => state.orderDetails);
     const { error: updateError, isUpdated } = useSelector((state) => state.order);
-    const { users } = useSelector((state) => state.allUsers);
-    // console.log(users);
 
     const updateOrderSubmitHandler = (e) => {
         e.preventDefault();
@@ -30,16 +26,14 @@ const ProcessOrder = ({ history, match }) => {
         const myForm = new FormData();
         
         myForm.set("status", status);
-        myForm.set("shipper", shipper);
         
-        dispatch(updateOrder(match.params.id, myForm));
+        dispatch(updateShipOrder(match.params.id, myForm));
     };
 
     const dispatch = useDispatch();
     const alert = useAlert();
 
     const [status, setStatus] = useState("");
-    const [shipper, setShipper] = useState("");
 
     useEffect(() => {
         if (error) {
@@ -63,7 +57,6 @@ const ProcessOrder = ({ history, match }) => {
         <Fragment>
         <MetaData title="Xử lý đơn hàng" />
         <div className="dashboard">
-            <SideBar />
             <div className="newProductContainer">
             {loading ? (
                 <Loader />
@@ -171,27 +164,12 @@ const ProcessOrder = ({ history, match }) => {
                         <AccountTreeIcon />
                         <select onChange={(e) => setStatus(e.target.value)}>
                         <option value="">Hành động</option>
-                        {order.orderStatus === "Chờ xác nhận" && (
-                            <option value="Chờ lấy hàng">Chờ lấy hàng</option>
+                        {order.orderStatus === "Đang giao hàng" && (
+                            <option value="Đã nhận hàng">Đã nhận hàng</option>
                         )}
                         </select>
                         
                     </div>
-                    {status === "Chờ lấy hàng" && (
-                            <div>
-                            <PersonIcon />
-                                <select onChange={(e) => setShipper(e.target.value)}>
-                                    <option value="">Chọn Shipper</option>
-                                {users && users.filter(user => user.role === 'shipper').map(user => (
-                                    <option value={user._id}>{user.name}</option>
-                                ))}
-                                </select>
-                            </div>
-                            
-                    )}
-                    
-                    
-
                     <Button
                         id="createProductBtn"
                         type="submit"

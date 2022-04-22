@@ -82,6 +82,7 @@ exports.myOrders = catchAsyncErrors( async (req, res, next) => {
     })
 })
 
+
 // get all orders -- admin only
 exports.getAllOrders = catchAsyncErrors( async (req, res, next) => {
     const orders = await Order.find()
@@ -112,10 +113,11 @@ exports.updateOrder = catchAsyncErrors( async (req, res, next) => {
         return next( new ErrorHander('Đơn hàng này đã giao xong', 400))
     }
 
-    if(req.body.status === 'Đang giao hàng') {
+    if(req.body.status === 'Chờ lấy hàng') {
         order.orderItems.forEach( async (order) => {
             await updateStock(order.product, order.quantity)
         })
+        order.shipper = req.body.shipper;
     }
 
     order.orderStatus = req.body.status
@@ -153,3 +155,15 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
         success: true, 
     });
 });
+
+// get my shipping orders
+exports.myShipping = catchAsyncErrors( async (req, res, next) => {
+    const orders = await Order.find({shipper: req.user._id})
+    res.status(200).json({
+        success: true,
+        orders
+    })
+})
+//choice shipper
+
+

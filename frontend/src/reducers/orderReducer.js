@@ -20,6 +20,9 @@ import {
     CANCEL_ORDER_SUCCESS,
     CANCEL_ORDER_FAIL,
     CANCEL_ORDER_RESET,
+    SHIPPING_ORDERS_REQUEST,
+    SHIPPING_ORDERS_SUCCESS,
+    SHIPPING_ORDERS_FAIL,
     ORDER_DETAILS_REQUEST,
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_FAIL,
@@ -89,17 +92,20 @@ export const myOrdersReducer = (state = { orders: [] }, action) => {
 export const allOrdersReducer = (state = { orders: [] }, action) => {
     switch (action.type) {
     case ALL_ORDERS_REQUEST:
+    case SHIPPING_ORDERS_REQUEST:
         return {
         loading: true,
         };
 
     case ALL_ORDERS_SUCCESS:
+    case SHIPPING_ORDERS_SUCCESS:
         return {
         loading: false,
         orders: action.payload,
         };
 
     case ALL_ORDERS_FAIL:
+    case SHIPPING_ORDERS_FAIL:
         return {
         loading: false,
         error: action.payload,

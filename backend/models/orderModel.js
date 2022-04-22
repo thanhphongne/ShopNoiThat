@@ -49,6 +49,10 @@ const orderSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
+    shipper: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+    },
     paymentInfo: {
         id: {
             type: String,

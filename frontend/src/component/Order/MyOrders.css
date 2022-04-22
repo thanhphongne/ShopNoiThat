@@ -20,11 +20,11 @@
     transition: all 0.5s;
     background-color: rgb(5, 5, 5);
 }
-.orderList{
+.MyorderList{
     width: 100%;
     margin-top: 20px;
 }
-.orders {
+.Myorders {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,7 +32,7 @@
     font: 400 1.2vmax "Roboto";
 
 }
-.order{
+.Myorder{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,12 +40,8 @@
     background-color: white;
     margin: 10px;
     border-top: 20px solid tomato;
-    box-sizing: border-box;
-    padding: 0 10px;
-    height: 20vh;
-
 }
-.orderHeading{
+.MyorderHeading{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -56,25 +52,25 @@
     height: 40px;
     background-color: white;
 }
-.orderHeading div:hover {
+.MyorderHeading div:hover {
     color: tomato;
     transform: translateY(-2px);
 }
-.orderProducts {
+.MyorderProducts {
     display: flex;
     flex-direction: column;
 }
-.product {
+.Myproduct {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
-.product a {
+.Myproduct a {
     text-decoration: none;
     color: #000;
 }
-.orderProducts img {
+.MyorderProducts img {
     width: 5vmax;
 }
 @media screen and (max-width: 600px) {
@@ -87,12 +83,12 @@
     font: 400 2.2vmax "Roboto";
     padding: 4vw;
     }
-    .order {
+    .Myorder {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
     }
-    .product{
+    .Myproduct{
         display: flex;
         flex-direction: column;
 

@@ -5,6 +5,9 @@ import {
     MY_ORDERS_REQUEST,
     MY_ORDERS_SUCCESS,
     MY_ORDERS_FAIL,
+    SHIPPING_ORDERS_REQUEST,
+    SHIPPING_ORDERS_SUCCESS,
+    SHIPPING_ORDERS_FAIL,
     ALL_ORDERS_REQUEST,
     ALL_ORDERS_SUCCESS,
     ALL_ORDERS_FAIL,
@@ -77,6 +80,21 @@ export const getAllOrders = () => async (dispatch) => {
         });
     }
     };
+    // Get my ship order
+export const getMyShipOrders = () => async (dispatch) => {
+    try {
+        dispatch({ type: SHIPPING_ORDERS_REQUEST });
+
+        const { data } = await axios.get("/api/v1/shipper/orders");
+
+        dispatch({ type: SHIPPING_ORDERS_SUCCESS, payload: data.orders });
+    } catch (error) {
+        dispatch({
+        type: SHIPPING_ORDERS_FAIL,
+        payload: error.response.data.message,
+        });
+    }
+};
 
     // Update Order
 export const updateOrder = (id, order) => async (dispatch) => {
@@ -90,6 +108,30 @@ export const updateOrder = (id, order) => async (dispatch) => {
         };
         const { data } = await axios.put(
         `/api/v1/admin/order/${id}`,
+        order,
+        config
+        );
+
+        dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });
+    } catch (error) {
+        dispatch({
+        type: UPDATE_ORDER_FAIL,
+        payload: error.response.data.message,
+        });
+    }
+    };
+    // Update Order
+export const updateShipOrder = (id, order) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_ORDER_REQUEST });
+
+        const config = {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        };
+        const { data } = await axios.put(
+        `/api/v1/shipper/order/${id}`,
         order,
         config
         );

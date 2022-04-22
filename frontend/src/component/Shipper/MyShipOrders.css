@@ -1,0 +1,95 @@
+.myShipOrdersPage {
+    width: 100vw;
+    max-width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(235, 235, 235);
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    font: 400 1.5vmax "Roboto";
+
+}
+
+#myShipOrdersHeading {
+    text-align: center;
+    padding: 0.5vmax;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    transition: all 0.5s;
+    background-color: rgb(5, 5, 5);
+}
+.ShipOrders {
+    display: flex;
+    flex-direction: column;
+}
+.SingleOrder {
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+    border-top: 20px solid tomato;
+    margin-top: 20px;
+    padding-left: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.Button{
+    display: flex;
+    flex-direction: row;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+.Button button:first-child {
+    background-color: tomato;
+    border: none;
+    margin: 2px;
+    color: white;
+    border-radius: 3px;
+}
+.Button button:first-child:hover{
+    transform: translateY(-2px);
+    transition-duration: 0.5s;
+    background-color: rgb(252, 45, 8);
+
+}
+.Button button:last-child {
+    background-color: green;
+    border: none;
+    margin: 2px;
+    color: white;
+    border-radius: 3px;
+}
+.Button button:last-child:hover{
+    transform: translateY(-2px);
+    transition-duration: 0.5s;
+    background-color: rgb(1, 161, 1);
+}
+
+.ShipOrder{
+    display: flex;
+    flex-direction: column;
+    
+}
+.ShipOrderProducts {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.ShipProduct {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items: center;
+    
+}
+.ShipProduct img {
+    width: 5vmax;
+}
+.ShipProduct a {
+    text-decoration: none;
+    color: black;
+}

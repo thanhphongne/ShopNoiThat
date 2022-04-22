@@ -74,6 +74,24 @@ export const loginAdmin = (email, password) => async (dispatch) => {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
     }
 };
+// admin shipper
+export const loginShipper = (email, password) => async (dispatch) => {
+    try {
+    dispatch({ type: LOGIN_REQUEST });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.post(
+        `/api/v1/shipper/login`,
+        { email, password },
+        config
+    );
+
+    dispatch({ type: LOGIN_SUCCESS, payload: data.user });
+    } catch (error) {
+    dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
+    }
+};
 
 // Register
 export const register = (userData) => async (dispatch) => {

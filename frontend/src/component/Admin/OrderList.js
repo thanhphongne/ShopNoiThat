@@ -81,10 +81,6 @@ const OrderList = ({ history }) => {
                                                 <Link to={`/product/${item.product}`}>
                                                     {item.name}
                                                 </Link>{" "}
-                                                <span>
-                                                    {item.quantity} X {item.price.toLocaleString()} VND ={" "}
-                                                    <b>{(item.price*item.quantity).toLocaleString()} VND</b>
-                                                </span>
                                             </div>
                                         ))}
                                     </div>

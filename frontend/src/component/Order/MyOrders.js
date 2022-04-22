@@ -44,14 +44,14 @@ const MyOrders = () => {
                         <div onClick={()=> setStatus('Đã hủy')}>Đã hủy({orders && orders.filter( order => order.orderStatus === 'Đã hủy').length})</div>
                     </div>
                     {orders && (
-                        <div className="orders">
+                        <div className="Myorders">
                             { orders.filter( order => order.orderStatus === status).map(order => (
-                                <div className="order">
+                                <div className="Myorder">
                                     <div>{order._id}</div>
-                                    <div className="orderProducts">
+                                    <div className="MyorderProducts">
                                     {order.orderItems &&
                                         order.orderItems.map((item) => (
-                                            <div key={item.product} className='product'>
+                                            <div key={item.product} className='Myproduct'>
                                                 <img src={item.image} alt="Product" />
                                                 <Link to={`/product/${item.product}`}>
                                                     {item.name}

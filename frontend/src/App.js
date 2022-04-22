@@ -42,6 +42,9 @@ import ProductReviews from './component/Admin/ProductReviews.js';
 import Contact from "./component/layout/Contact/Contact";
 import About from "./component/layout/About/About";
 import NotFound from "./component/layout/NotFound/NotFound";
+import LoginShipper from './component/Shipper/LoginShipper.js'
+import MyShipOrder from './component/Shipper/MyShipOrder'
+import ProcessShipOrder from './component/Shipper/ProcessShipOrder.js'
 
 function App() {
     const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -108,6 +111,13 @@ function App() {
 
             <Route exact path="/login" component={LoginSignUp} />
             <Route exact path="/admin" component={LoginAdmin} />
+            <Route exact path="/shipper" component={LoginShipper} />
+            <ProtectedRoute exact path="/shipper/myorders" component={MyShipOrder} />
+            <ProtectedRoute
+            exact
+            path="/shipper/order/:id"
+            component={ProcessShipOrder}
+            />
 
             <Route exact path="/cart" component={Cart} />
 
