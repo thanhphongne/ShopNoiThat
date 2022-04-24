@@ -128,6 +128,8 @@ exports.updateOrder = catchAsyncErrors( async (req, res, next) => {
 
     if(req.body.status === 'Đã nhận hàng'){
         order.deliveredAt = Date.now()
+        order.paymentInfo.status = 'succeeded'
+        order.paymentInfo.id = 'Paided'
     }
 
     await order.save({ validateBeforeSave: false })

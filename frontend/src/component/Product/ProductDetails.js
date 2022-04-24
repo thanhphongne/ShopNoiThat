@@ -64,6 +64,11 @@ const ProductDetails = ({ match }) => {
         const qty = quantity + 1
         setQuantity(qty)
     }
+    const handleInputQuantity = (value) => {
+        if(value >= 0 && value <= product.Stock) {
+            setQuantity(value)
+        }
+    }
 
     const addToCartHander = () => {
         dispatch(addItemsToCart(match.params.id, quantity));
@@ -138,7 +143,7 @@ const ProductDetails = ({ match }) => {
                                 <div className="detailsBlock-3-1">
                                     <div className="detailsBlock-3-1-1">
                                         <button onClick={decreaseQuantity}>-</button>
-                                        <input readOnly value={quantity} type="number" />
+                                        <input value={quantity} type="number" onChange={(e) => handleInputQuantity(e.target.value)}/>
                                         <button onClick={increaseQuantity}>+</button>
                                     </div>{' '}
                                     <button 

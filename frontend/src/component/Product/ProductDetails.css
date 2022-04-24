@@ -81,7 +81,6 @@
     padding: 0.5vmax;
     width: 1vmax;
     text-align: center;
-    outline: none;
     font: 400 0.8vmax 'Roboto';
     color: rgba(0, 0, 0, 0.74);
 }
