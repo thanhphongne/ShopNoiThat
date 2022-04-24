@@ -114,10 +114,13 @@ exports.updateOrder = catchAsyncErrors( async (req, res, next) => {
     }
 
     if(req.body.status === 'Chờ lấy hàng') {
+        
+        order.shipper = req.body.shipper;
+    }
+    if(req.body.status === 'Đang giao hàng') {
         order.orderItems.forEach( async (order) => {
             await updateStock(order.product, order.quantity)
         })
-        order.shipper = req.body.shipper;
     }
 
     order.orderStatus = req.body.status

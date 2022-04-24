@@ -22,7 +22,6 @@ const NewProduct = ({ history }) => {
 
     const [name, setName] = useState("");
     const [supplier, setSupplier] = useState("");
-    const [priceIn, setPriceIn] = useState(0);
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
@@ -53,7 +52,6 @@ const NewProduct = ({ history }) => {
 
         myForm.set("name", name);
         myForm.set("supplier", supplier);
-        myForm.set("priceIn", priceIn);
         myForm.set("price", price);
         myForm.set("description", description);
         myForm.set("category", category);
@@ -123,16 +121,7 @@ const NewProduct = ({ history }) => {
                 <AttachMoneyIcon />
                 <input
                     type="number"
-                    placeholder="Giá nhập"
-                    required
-                    onChange={(e) => setPriceIn(e.target.value)}
-                />
-                </div>
-                <div>
-                <AttachMoneyIcon />
-                <input
-                    type="number"
-                    placeholder="Giá bán"
+                    placeholder="Giá"
                     required
                     onChange={(e) => setPrice(e.target.value)}
                 />

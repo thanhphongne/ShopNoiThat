@@ -4,7 +4,7 @@ import DoneIcon from "@material-ui/icons/Done";
 import MoveToInboxOutlinedIcon from "@material-ui/icons/MoveToInbox";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import WatchOutlinedIcon from "@material-ui/icons/WatchOutlined";
-import RemoveCircleSharpIcon from "@material-ui/icons/RemoveCircleSharp";
+// import RemoveCircleSharpIcon from "@material-ui/icons/RemoveCircleSharp";
 import "./OrderSteps.css";
 
 const OrderStep = ({ activeStep }) => {
@@ -24,11 +24,7 @@ const OrderStep = ({ activeStep }) => {
         {
         label: <Typography>Đã nhận hàng</Typography>,
         icon: <DoneIcon />,
-        },
-        {
-        label: <Typography>Đã hủy</Typography>,
-        icon: <RemoveCircleSharpIcon />,
-        },
+        }
     ];
 
     const stepStyles = {

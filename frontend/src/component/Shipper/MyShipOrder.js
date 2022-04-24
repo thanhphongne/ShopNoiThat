@@ -62,10 +62,10 @@ const MyShipOrder = () => {
                 <div className="myShipOrdersPage">
                 <Typography id="myShipOrdersHeading">Shipper {user.name}</Typography>
                 <div className="orderList">
-                    <div className="orderHeading">
+                    <div className="ShipOrderHeading">
                         <div onClick={()=> setStatus('Chờ lấy hàng')}>Chờ lấy hàng({orders && orders.filter( order => order.orderStatus === 'Chờ lấy hàng').length})</div>
                         <div onClick={()=> setStatus('Đang giao hàng')}>Đang giao hàng({orders && orders.filter( order => order.orderStatus === 'Đang giao hàng').length})</div>
-                        <div onClick={()=> setStatus('Đã nhận hàng')}>Đã nhận hàng({orders && orders.filter( order => order.orderStatus === 'Đã nhận hàng').length})</div>
+                        <div onClick={()=> setStatus('Đã nhận hàng')}>Đã giao xong({orders && orders.filter( order => order.orderStatus === 'Đã nhận hàng').length})</div>
                     </div>
                     {orders && (
                         <div className="ShipOrders">

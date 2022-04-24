@@ -10,10 +10,6 @@ const productSchema = mongoose.Schema({
         type: String,
         required: [true, "Nhập mô tả sản phẩm"]
     },
-    priceIn: {
-        type: Number,
-        default: 0
-    },
     price: {
         type: Number,
         default: 0

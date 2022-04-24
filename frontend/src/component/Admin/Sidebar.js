@@ -49,12 +49,23 @@ const Sidebar = () => {
             Đơn Hàng({orders && orders.filter( order => order.orderStatus === 'Chờ xác nhận').length})
             </p>
         </Link>
-        <Link to="/admin/orders">
-            <p>
-            <DescriptionIcon/>
-            Hóa đơn
-            </p>
+        <Link>
+            <TreeView
+            defaultCollapseIcon={<ExpandMoreIcon />}
+            defaultExpandIcon={<DescriptionIcon/>}
+            >
+            <TreeItem nodeId="1" label="Hóa đơn">
+                <Link to="/admin/bills">
+                <TreeItem nodeId="2" label="Tát cả hóa đơn" icon={<PostAddIcon />} />
+                </Link>
+
+                <Link to="/admin/bill">
+                <TreeItem nodeId="3" label="Thêm hóa đơn mới" icon={<AddIcon />} />
+                </Link>
+            </TreeItem>
+            </TreeView>
         </Link>
+        
         <Link to="/admin/users">
             <p>
             <PeopleIcon /> Người Dùng

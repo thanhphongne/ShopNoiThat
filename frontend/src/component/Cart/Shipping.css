@@ -29,28 +29,11 @@ h3 {
 }
 .oldAddress {
     font: 1vw "Roboto";
-    display: flex;
-    flex-direction: column;
     margin-top: 10px;
-}
-.oldAddress > div{
-    font: 400 1.3vmax "Roboto";
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-}
-.oldAddress > div button {
-    border: none;
-    background-color: tomato;
-    color: white;
     width: 100%;
-    height: 95%;
-    cursor: pointer;
-    transition: all 0.5s;
-    outline: none;
-    border-radius:5px;
-    
 }
+
+
 .shippingForm{
     display: flex;
     flex-direction: column;

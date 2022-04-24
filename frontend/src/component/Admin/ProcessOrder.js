@@ -31,14 +31,19 @@ const ProcessOrder = ({ history, match }) => {
         
         myForm.set("status", status);
         myForm.set("shipper", shipper);
+        console.log(myForm);
         
         dispatch(updateOrder(match.params.id, myForm));
     };
+    // const setOtherShipper = (e) => {
+    //     setShipper(e)
+    //     setStatus('Chờ lấy hàng')
+    // }
 
     const dispatch = useDispatch();
     const alert = useAlert();
 
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState("Chờ lấy hàng");
     const [shipper, setShipper] = useState("");
 
     useEffect(() => {
@@ -97,6 +102,17 @@ const ProcessOrder = ({ history, match }) => {
                         </div>
                     </div>
 
+                    {order.shipper && 
+                        <Fragment>
+                        <Typography>Người giao hàng</Typography>
+                        <div className="orderDetailsContainerBox">
+                            {users.filter(user => user._id === order.shipper).map(user => (
+                            <p>{user.name}</p>
+                            ))}
+                        </div>
+                        </Fragment>
+                    }
+                                
                     <Typography>Thanh toán</Typography>
                     <div className="orderDetailsContainerBox">
                         <div>
@@ -119,6 +135,7 @@ const ProcessOrder = ({ history, match }) => {
                         <p>Thành tiền:</p>
                         <span>{order.totalPrice && order.totalPrice.toLocaleString()} VND</span>
                         </div>
+
                     </div>
 
                     <Typography>Trạng thái</Typography>
@@ -188,7 +205,7 @@ const ProcessOrder = ({ history, match }) => {
                                 </select>
                             </div>
                             
-                    )}
+                    )} 
                     
                     
 
