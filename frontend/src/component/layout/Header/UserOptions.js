@@ -21,8 +21,8 @@ const UserOptions = ({ user }) => {
     const dispatch = useDispatch();
 
     const options = [
-        { icon: <ListAltIcon />, name: 'Đơn hàng', func: orders },
         { icon: <PersonIcon />, name: 'Tôi', func: account },
+        { icon: <ListAltIcon />, name: 'Đơn hàng', func: orders },
         { icon: <ShoppingCartIcon style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}/>, name: `Giỏ hàng(${cartItems.length})`, func: cart },
         { icon: <ExitToAppIcon />, name: 'Đăng  xuất', func: logoutUser },
     ];
@@ -50,6 +50,9 @@ const UserOptions = ({ user }) => {
     function logoutUser() {
         dispatch(logout());
         alert.success('Đăng xuất thành công');
+    }
+    if(user.role === 'shipper'){
+        options.splice(1,2)
     }
 
     return (

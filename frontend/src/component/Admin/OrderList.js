@@ -28,6 +28,13 @@ const OrderList = ({ history }) => {
         dispatch(deleteOrder(id));
     };
     const [status, setStatus] = useState('Chờ xác nhận')
+    const [orderId, setOrderId] = useState('')
+    const searchOrder = (e) => {
+        if(e.length === 24){
+            setOrderId(e)
+
+        }
+    }
 
     useEffect(() => {
         if (error) {
@@ -59,7 +66,37 @@ const OrderList = ({ history }) => {
             <SideBar />
             <div className="productListContainer">
             <h1 id="productListHeading">Tất cả đơn hàng</h1>
-
+            <form className="searchOrder">
+                <input type="text" value={orderId} placeholder='Nhập mã đơn hàng' onChange={(e) => {searchOrder(e.target.value)}}/>
+                <button onClick={()=> {setOrderId(null)}}>Xóa</button>
+                </form>
+            {
+                orderId && (
+                <div className="searchOrderResult">
+                    {orders.filter(order => order._id===orderId).map(order => (
+                        <div className="order">
+                                    <div>{order._id}</div>
+                                    <div className="orderProducts">
+                                    {order.orderItems &&
+                                        order.orderItems.map((item) => (
+                                            <div key={item.product} className='product'>
+                                                <img src={item.image} alt="Product" />
+                                                <Link to={`/product/${item.product}`}>
+                                                    {item.name}
+                                                </Link>{" "}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <span>{order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
+                                    <Link to={`/admin/order/${order._id}`}>
+                                    <EditIcon/></Link>
+                                    <Button onClick={() => deleteOrderHandler(order._id)}><DeleteIcon/></Button>
+                                </div>
+                    ))
+                }
+                </div>
+                )
+            }
             <div className="orderList">
                     <div className="orderHeading">
                         <div onClick={()=> setStatus('Chờ xác nhận')}>Chờ xác nhận({orders && orders.filter( order => order.orderStatus === 'Chờ xác nhận').length})</div>

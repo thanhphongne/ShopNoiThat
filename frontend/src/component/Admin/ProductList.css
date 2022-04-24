@@ -44,7 +44,7 @@
 }
 
 .MuiDataGrid-columnHeader div {
-    color: rgb(255, 255, 255);
+    color: tomato;
 }
 .orders {
     display: flex;
@@ -98,6 +98,31 @@
 }
 .orderProducts img {
     width: 5vmax;
+}
+.searchOrder{
+    background-color: tomato;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 400 1.2vmax "Roboto";
+    border: none;
+}
+.searchOrder input{
+    height: 90%;
+    box-sizing: border-box;
+    width: 20vmax;
+    border: none;
+}
+.searchOrder button{
+    height: 90%;
+    box-sizing: border-box;
+    border: none;
+    background-color: white;
+
+}
+.searchOrderResult{
+    position: relative;
 }
 @media screen and (max-width: 600px) {
     .productListTable div {
