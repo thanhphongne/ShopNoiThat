@@ -20,31 +20,32 @@ import UpdatePassword from './component/User/UpdatePassword';
 import ForgotPassword from './component/User/ForgotPassword';
 import ResetPassword from './component/User/ResetPassword';
 import Cart from './component/Cart/Cart';
-import Shipping from './component/Cart/Shipping.js';
-import ConfirmOrder from './component/Cart/ConfirmOrder.js';
-import Payment from './component/Cart/Payment.js';
-import Success from './component/Cart/Success.js';
+import Shipping from './component/Cart/Shipping';
+import ConfirmOrder from './component/Cart/ConfirmOrder';
+import Payment from './component/Cart/Payment';
+import Success from './component/Cart/Success';
 import axios from 'axios';
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
-import MyOrders from './component/Order/MyOrders.js'
-import OrderDetails from './component/Order/OrderDetails.js'
-import Dashboard from './component/Admin/Dashboard.js'
-import LoginAdmin from './component/Admin/LoginAdmin.js'
-import ProductList from './component/Admin/ProductList.js'
+import MyOrders from './component/Order/MyOrders'
+import OrderDetails from './component/Order/OrderDetails'
+import Dashboard from './component/Admin/Dashboard'
+import LoginAdmin from './component/Admin/LoginAdmin'
+import ProductList from './component/Admin/ProductList'
 import NewProduct from './component/Admin/NewProduct';
 import UpdateProduct from './component/Admin/UpdateProduct';
 import OrderList from './component/Admin/OrderList';
-import ProcessOrder from './component/Admin/ProcessOrder.js';
-import UsersList from './component/Admin/UsersList.js';
-import UpdateUser from './component/Admin/UpdateUser.js';
-import ProductReviews from './component/Admin/ProductReviews.js';
+import ProcessOrder from './component/Admin/ProcessOrder';
+import UsersList from './component/Admin/UsersList';
+import UpdateUser from './component/Admin/UpdateUser';
+import ProductReviews from './component/Admin/ProductReviews';
+import NewBill from './component/Admin/NewBill';
 import Contact from "./component/layout/Contact/Contact";
 import About from "./component/layout/About/About";
 import NotFound from "./component/layout/NotFound/NotFound";
-import LoginShipper from './component/Shipper/LoginShipper.js'
+import LoginShipper from './component/Shipper/LoginShipper'
 import MyShipOrder from './component/Shipper/MyShipOrder'
-import ProcessShipOrder from './component/Shipper/ProcessShipOrder.js'
+import ProcessShipOrder from './component/Shipper/ProcessShipOrder'
 
 function App() {
     const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -148,6 +149,13 @@ function App() {
             path="/admin/product"
             isAdmin={true}
             component={NewProduct}
+            />
+
+            <ProtectedRoute
+            exact
+            path="/admin/bill"
+            isAdmin={true}
+            component={NewBill}
             />
 
             <ProtectedRoute

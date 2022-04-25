@@ -136,7 +136,7 @@ export const createProduct = (productData) => async (dispatch) => {
         }
     };
     
-    // Update Product
+// Update Product
 export const updateProduct = (id, productData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_PRODUCT_REQUEST });
@@ -180,8 +180,7 @@ export const deleteProduct = (id) => async (dispatch) => {
             payload: error.response.data.message,
         });
     }
-    };
-    
+};
 
 export const clearErrors = () => async (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });
