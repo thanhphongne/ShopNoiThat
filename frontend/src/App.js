@@ -46,6 +46,8 @@ import NotFound from "./component/layout/NotFound/NotFound";
 import LoginShipper from './component/Shipper/LoginShipper'
 import MyShipOrder from './component/Shipper/MyShipOrder'
 import ProcessShipOrder from './component/Shipper/ProcessShipOrder'
+import BillList from './component/Admin/BillList'
+import UpdateBill from './component/Admin/UpdateBill';
 
 function App() {
     const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -156,6 +158,18 @@ function App() {
             path="/admin/bill"
             isAdmin={true}
             component={NewBill}
+            />
+            <ProtectedRoute
+            exact
+            path="/admin/bill/:id"
+            isAdmin={true}
+            component={UpdateBill}
+            />
+            <ProtectedRoute
+            exact
+            path="/admin/bills"
+            isAdmin={true}
+            component={BillList}
             />
 
             <ProtectedRoute

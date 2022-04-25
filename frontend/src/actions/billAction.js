@@ -13,6 +13,9 @@ import {
     DELETE_BILL_REQUEST,
     DELETE_BILL_SUCCESS,
     DELETE_BILL_FAIL,
+    BILL_DETAILS_REQUEST,
+    BILL_DETAILS_SUCCESS,
+    BILL_DETAILS_FAIL,
     CLEAR_ERRORS,
 } from '../constants/billConstants';
 
@@ -30,6 +33,23 @@ export const getAllBills = () => async (dispatch) => {
         } catch (error) {
         dispatch({
             type: ALL_BILL_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
+export const getBillDetails = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: BILL_DETAILS_REQUEST });
+
+        const { data } = await axios.get(`/api/v1/admin/bill/${id}`);
+
+        dispatch({
+            type: BILL_DETAILS_SUCCESS,
+            payload: data.bill,
+        });
+    } catch (error) {
+        dispatch({
+            type: BILL_DETAILS_FAIL,
             payload: error.response.data.message,
         });
     }

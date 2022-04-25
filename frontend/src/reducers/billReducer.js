@@ -14,6 +14,9 @@ import {
     DELETE_BILL_FAIL,
     UPDATE_BILL_RESET,
     DELETE_BILL_RESET,
+    BILL_DETAILS_REQUEST,
+    BILL_DETAILS_SUCCESS,
+    BILL_DETAILS_FAIL,
     CLEAR_ERRORS,
 } from '../constants/billConstants';
 
@@ -27,7 +30,7 @@ export const billsReducer = (state = { bills: [] }, action) => {
         case ALL_BILL_SUCCESS:
             return {
             loading: false,
-            bills: action.payload.bills
+            bills: action.payload
             };
 
         case ALL_BILL_FAIL:
@@ -127,4 +130,30 @@ export const newBillReducer = (state = { bill: {} }, action) => {
                 return state;
             }
         };
-    
+
+export const billDetailsReducer = (state = { bill: {} }, action) => {
+    switch (action.type) {
+        case BILL_DETAILS_REQUEST:
+            return {
+                loading: true,
+                ...state,
+            };
+        case BILL_DETAILS_SUCCESS:
+            return {
+                loading: false,
+                bill: action.payload,
+            };
+        case BILL_DETAILS_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null,
+            };
+        default:
+            return state;
+    }
+};

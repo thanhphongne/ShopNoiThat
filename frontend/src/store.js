@@ -31,7 +31,8 @@ import {
 import {
     billsReducer,
     newBillReducer,
-    billReducer
+    billReducer,
+    billDetailsReducer
 } from "./reducers/billReducer";
 
 const reducer = combineReducers({
@@ -55,7 +56,8 @@ const reducer = combineReducers({
     review: reviewReducer,
     bills: billsReducer,
     bill: billReducer,
-    newBill: newBillReducer
+    newBill: newBillReducer,
+    billDetails: billDetailsReducer
 });
 
 let initialState = {

@@ -26,6 +26,21 @@ exports.newBill = catchAsyncErrors(async (req, res, next) => {
     })
 })
 
+// get product details -- all user
+exports.getBillDetails = catchAsyncErrors(async (req, res, next) => {
+
+    const bill = await Bill.findById(req.params.id);
+
+    if(!bill) {
+        return next(new ErrorHander("Không tìm thấy hóa đơn nào", 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        bill,
+    })
+})
+
 // get all bills -- admin only
 exports.getAllBills = catchAsyncErrors( async (req, res, next) => {
     const bills = await Bill.find()
