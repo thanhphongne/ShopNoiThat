@@ -3,20 +3,22 @@ import { DataGrid } from "@material-ui/data-grid";
 import "./ProductReviews.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
-    clearErrors,
-    getAllReviews,
-    deleteReviews,
-    } from "../../actions/productAction";
-    import { useAlert } from "react-alert";
-    import { Button } from "@material-ui/core";
-    import MetaData from "../layout/MetaData";
-    import DeleteIcon from "@material-ui/icons/Delete";
-    import Star from "@material-ui/icons/Star";
+clearErrors,
+getAllReviews,
+deleteReviews,
+getAdminProduct,
+} from "../../actions/productAction";
+import { useAlert } from "react-alert";
+import { Button } from "@material-ui/core";
+import MetaData from "../layout/MetaData";
+import DeleteIcon from "@material-ui/icons/Delete";
+import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 
-    import SideBar from "./Sidebar";
-    import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
 
-    const ProductReviews = ({ history }) => {
+import SideBar from "./Sidebar";
+import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
+
+const ProductReviews = ({ history }) => {
     const dispatch = useDispatch();
 
     const alert = useAlert();
@@ -28,6 +30,8 @@ import {
     const { error, reviews, loading } = useSelector(
         (state) => state.productReviews
     );
+    const { products } = useSelector((state) => state.products);
+
 
     const [productId, setProductId] = useState("");
 
@@ -44,6 +48,8 @@ import {
         if (productId.length === 24) {
         dispatch(getAllReviews(productId));
         }
+        dispatch(getAdminProduct());
+
         if (error) {
         alert.error(error);
         dispatch(clearErrors());
@@ -140,16 +146,13 @@ import {
             >
                 <h1 className="productReviewsFormHeading">Tất cả đánh giá</h1>
 
-                <div>
-                <Star />
-                <input
-                    type="text"
-                    placeholder="Mã sản phẩm"
-                    required
-                    value={productId}
-                    onChange={(e) => setProductId(e.target.value)}
-                />
-                </div>
+                
+                <select onChange={(e) => setProductId(e.target.value)} className="selectProduct">
+                    <option>Chọn sản phẩm</option>
+                    {products && products.map(product => (
+                        <option value={product._id}>{product.name}</option>
+                    ))}
+                </select>
 
                 <Button
                 id="createProductBtn"
