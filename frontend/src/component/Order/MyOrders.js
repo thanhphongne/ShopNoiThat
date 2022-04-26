@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
-import LaunchIcon from "@material-ui/icons/Launch";
 
 const MyOrders = () => {
     const dispatch = useDispatch();
@@ -47,7 +46,13 @@ const MyOrders = () => {
                         <div className="Myorders">
                             { orders.filter( order => order.orderStatus === status).map(order => (
                                 <div className="Myorder">
-                                    <div>{order._id}</div>
+                                <Link to={`/order/${order._id}`}>
+                                    <div id='orderId'>Mã đơn hàng: {order._id}</div>
+                                    <div className={
+                                        order.orderStatus && order.orderStatus === "Đã nhận hàng"
+                                            ? "greenColor"
+                                            : "redColor"
+                                        }>Trạng thái: {order.orderStatus}</div>
                                     <div className="MyorderProducts">
                                     {order.orderItems &&
                                         order.orderItems.map((item) => (
@@ -57,15 +62,13 @@ const MyOrders = () => {
                                                     {item.name}
                                                 </Link>{" "}
                                                 <span>
-                                                    {item.quantity} X {item.price.toLocaleString()} VND ={" "}
-                                                    <b>{(item.price*item.quantity).toLocaleString()} VND</b>
+                                                    {item.quantity} X {item.price.toLocaleString()} VND 
                                                 </span>
                                             </div>
                                         ))}
                                     </div>
-                                    <span>{order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
-                                    <Link to={`/order/${order._id}`}>
-                                    <LaunchIcon/></Link>
+                                    <span>Tổng cộng: {order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
+                                </Link>
                                 </div>
                             ))
                             }

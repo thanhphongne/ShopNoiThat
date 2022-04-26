@@ -1,0 +1,152 @@
+.productListContainer {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    border-left: 1px solid rgba(0, 0, 0, 0.158);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#productListHeading {
+    font: 400 2rem "Roboto";
+    padding: 0.5vmax;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.637);
+    transition: all 0.5s;
+    margin: 2rem;
+    text-align: center;
+}
+
+.productListTable {
+    background-color: white;
+    border: none !important;
+}
+
+.productListTable div {
+    font: 300 1vmax "Roboto";
+    color: rgba(0, 0, 0, 0.678);
+    border: none !important;
+}
+
+.productListTable a,
+.productListTable button {
+    color: rgba(0, 0, 0, 0.527);
+    transition: all 0.5s;
+}
+
+.productListTable a:hover {
+    color: tomato;
+}
+
+.productListTable button:hover {
+    color: rgb(236, 30, 30);
+}
+
+.MuiDataGrid-columnHeader div {
+    color: tomato;
+}
+.orders {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    font: 400 1.2vmax "Roboto";
+
+}
+.order{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: white;
+    box-sizing: border-box;
+    margin: 10px;
+    border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+    border-radius: 10px;
+    padding: 0.5vmax;
+    transition: all 0.5s;
+
+}
+.order:hover {
+    box-shadow: 0 0 5px rgba(15, 15, 15, 0.5);
+    transform: translateY(-1vmax);
+}
+.action {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.action a {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 2vmax;
+    transform: translateY(2px);
+}
+.orderHeading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font: 400 1.2vmax "Roboto";
+    position: sticky;
+    top: 20px;
+    height: 40px;
+    background-color: white;
+}
+.orderHeading div:hover {
+    color: tomato;
+    transform: translateY(-2px);
+}
+.orderProducts {
+    width: 70%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.product {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.product a {
+    text-decoration: none;
+    color: #000;
+}
+.orderProducts img {
+    width: 5vmax;
+}
+.searchOrder{
+    background-color: tomato;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 400 1.2vmax "Roboto";
+    border: none;
+}
+.searchOrder input{
+    height: 90%;
+    box-sizing: border-box;
+    width: 20vmax;
+    border: none;
+}
+.searchOrder button{
+    height: 90%;
+    box-sizing: border-box;
+    border: none;
+    background-color: white;
+
+}
+.searchOrderResult{
+    position: relative;
+    z-index: 10;
+}
+@media screen and (max-width: 600px) {
+    .productListTable div {
+    font: 300 4vw "Roboto";
+    }
+}

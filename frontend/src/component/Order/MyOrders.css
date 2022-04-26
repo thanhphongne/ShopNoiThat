@@ -1,5 +1,12 @@
+a {
+    width: 100%;
+    text-decoration: none !important;
+    color: #000 !important;
+}
+
 .myOrdersPage {
     width: 100vw;
+    height: 100vh;
     max-width: 100%;
     padding: 0 7vmax;
     box-sizing: border-box;
@@ -13,12 +20,13 @@
 
 #myOrdersHeading {
     text-align: center;
-    font: 400 1.2vmax "Roboto";
+    font: 400 1.5vmax "Roboto";
     padding: 0.5vmax;
     box-sizing: border-box;
     color: rgb(0, 0, 0);
     transition: all 0.5s;
     background-color: rgb(5, 5, 5);
+    height: 5vh;
 }
 .MyorderList{
     width: 100%;
@@ -30,18 +38,31 @@
     justify-content: center;
     margin-top: 20px;
     font: 400 1.2vmax "Roboto";
-
+    padding: 0 10vmax;
 }
 .Myorder{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     background-color: white;
+    box-sizing: border-box;
     margin: 10px;
-    border-top: 20px solid tomato;
+    border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+    border-radius: 10px;
+    padding: 0.5vmax;
+    transition: all 0.5s;
+
 }
-.MyorderHeading{
+.Myorder:hover {
+    box-shadow: 0 0 5px rgba(15, 15, 15, 0.5);
+    transform: translateY(-1vmax);
+}
+#orderId {
+    width: 100%;
+    background-color: tomato;
+}
+.myOrderHeading{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -52,9 +73,13 @@
     height: 40px;
     background-color: white;
 }
-.MyorderHeading div:hover {
+.orderHeading div {
+    transition: all 0.5s;
+}
+.orderHeading div:hover {
     color: tomato;
-    transform: translateY(-2px);
+    transform: translateY(-1vmax);
+
 }
 .MyorderProducts {
     display: flex;
@@ -66,10 +91,11 @@
     justify-content: flex-start;
     align-items: center;
 }
-.Myproduct a {
-    text-decoration: none;
-    color: #000;
+.Myproduct span {
+    display: inline;
+    width: 20%;
 }
+
 .MyorderProducts img {
     width: 5vmax;
 }
@@ -80,7 +106,7 @@
     }
 
     #myOrdersHeading {
-    font: 400 2.2vmax "Roboto";
+    font: 600 2.2vmax "Roboto";
     padding: 4vw;
     }
     .Myorder {
