@@ -40,7 +40,7 @@ const NewProduct = ({ history }) => {
 
         if (success) {
         alert.success("Đã thêm sản phẩm");
-        history.push("/admin/dashboard");
+        history.push("/admin/products");
         dispatch({ type: NEW_PRODUCT_RESET });
         }
     }, [dispatch, alert, error, history, success]);

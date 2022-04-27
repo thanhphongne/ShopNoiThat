@@ -49,7 +49,7 @@ const BillList = ({ history }) => {
 
         if (isDeleted) {
         alert.success("Đã xóa hóa đơn");
-        history.push("/admin/dashboard");
+        history.push("/admin/bills");
         dispatch({ type: DELETE_BILL_RESET });
         }
 
@@ -145,12 +145,12 @@ const BillList = ({ history }) => {
 
     return (
         <Fragment>
-        <MetaData title={`Tất cả sản phẩm - Quản trị`} />
+        <MetaData title={`Tất cả hóa đơn - Quản trị`} />
 
         <div className="dashboard">
             <SideBar />
             <div className="productListContainer">
-            <h1 id="productListHeading">Tất cả sản phẩm</h1>
+            <h1 id="productListHeading">Tất cả hóa đơn</h1>
             <DataGrid
                 rows={rows}
                 columns={columns}

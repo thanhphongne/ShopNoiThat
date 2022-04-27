@@ -121,9 +121,13 @@
     font: 400 1vmax "Roboto";
     border-radius: 15px;
 }
+.orderSummary > button:last-child {
+    background-color: rgb(238, 255, 80);
+    color: black;
+}
 
-.orderSummary > button:hover {
-    background-color: rgb(192, 71, 50);
+.orderSummary > button:last-child:hover {
+    background-color: rgb(255, 230, 0);
 }
 
 @media screen and (max-width: 600px) {

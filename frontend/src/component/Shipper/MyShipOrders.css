@@ -53,6 +53,7 @@ a {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    
 }
 .ShipOrder {
     width: 100%;
@@ -61,6 +62,8 @@ a {
     justify-content: space-evenly;
     background-color: white;
     border-radius: 5px;
+    border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+
 }
 .ShipOrderProducts {
     display: flex;

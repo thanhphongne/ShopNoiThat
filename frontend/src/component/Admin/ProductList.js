@@ -44,7 +44,7 @@ import {
 
         if (isDeleted) {
         alert.success("Đã xóa sản phẩm");
-        history.push("/admin/dashboard");
+        history.push("/admin/products");
         dispatch({ type: DELETE_PRODUCT_RESET });
         }
 

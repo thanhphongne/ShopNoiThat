@@ -9,6 +9,7 @@ const Proflie = ({ history }) => {
     const { user, loading, isAuthenticated } = useSelector(
         (state) => state.user,
     );
+    const link = user.role === 'shipper' ? '/shipper/myorders' : '/orders'
 
     useEffect(() => {
         if (isAuthenticated === false) {
@@ -43,7 +44,7 @@ const Proflie = ({ history }) => {
                                 <p>{String(user.createdAt).substr(0, 10)}</p>
                             </div>
                             <div>
-                                <Link to="/orders">Đơn Hàng</Link>
+                                <Link to={link}>Đơn Hàng</Link>
                                 <Link to="/password/update">Đổi Mật Khẩu</Link>
                             </div>
                         </div>
