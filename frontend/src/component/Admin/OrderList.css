@@ -99,8 +99,7 @@
     transform: translateY(-2px);
 }
 .orderProducts {
-    width: 70%;
-    margin-left: 10%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;

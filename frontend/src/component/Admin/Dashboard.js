@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction.js";
 import { getAllUsers } from "../../actions/userAction.js";
+import { getAllBills } from "../../actions/billAction.js";
 import MetaData from "../layout/MetaData";
 
 const Dashboard = () => {
@@ -18,6 +19,9 @@ const Dashboard = () => {
     const { orders } = useSelector((state) => state.allOrders);
 
     const { users } = useSelector((state) => state.allUsers);
+
+    const { bills } = useSelector((state) => state.bills);
+
 
     let outOfStock = 0;
 
@@ -32,16 +36,22 @@ const Dashboard = () => {
         dispatch(getAdminProduct());
         dispatch(getAllOrders());
         dispatch(getAllUsers());
+        dispatch(getAllBills());
     }, [dispatch]);
 
     let totalAmount = 0;
+    let totalBill = 0
     orders &&
         orders.forEach((item) => {
         totalAmount += item.totalPrice;
         });
+    bills &&
+        bills.forEach((item) => {
+        totalBill += item.total;
+        });
 
     const lineState = {
-        labels: [" ", "Doanh thu hiên tại"],
+        labels: [" ", "Hiện tại"],
         datasets: [
         {
             label: "DOANH THU",
@@ -49,8 +59,15 @@ const Dashboard = () => {
             hoverBackgroundColor: ["rgb(197, 72, 49)"],
             data: [0, totalAmount],
         },
+        {
+            label: "TIỀN HÀNG",
+            backgroundColor: ["navi"],
+            hoverBackgroundColor: ["rgb(97, 72, 49)"],
+            data: [0, totalBill],
+        },
         ],
     };
+    
 
     const doughnutState = {
         labels: ["Hết hàng", "Còn hàng"],
@@ -76,6 +93,9 @@ const Dashboard = () => {
                 <p>
                 Tổng Doanh Thu <br />{totalAmount.toLocaleString()} VND
                 </p>
+                <p>
+                Tổng Tiền Hàng <br />{totalBill.toLocaleString()} VND
+                </p>
                 
             </div>
             <div className="dashboardSummaryBox2">
@@ -86,6 +106,10 @@ const Dashboard = () => {
                 <Link to="/admin/orders">
                 <p>Đơn Hàng</p>
                 <p>{orders && orders.length}</p>
+                </Link>
+                <Link to="/admin/bills">
+                <p>Hóa đơn</p>
+                <p>{bills && bills.length}</p>
                 </Link>
                 <Link to="/admin/users">
                 <p>Người dùng</p>

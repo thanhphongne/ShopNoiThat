@@ -30,11 +30,7 @@ const MyShipOrder = () => {
         myForm.set("status", 'Chờ xác nhận');
         dispatch(updateShipOrder(id, myForm))
     }
-    
-    
-
     const { loading, error, orders } = useSelector((state) => state.allOrders);
-
 
     useEffect(() => {
         if (error) {
@@ -73,7 +69,7 @@ const MyShipOrder = () => {
                                 <Link to={`/shipper/order/${order._id}`}>
                                 <div className="SingleOrder">
                                     <div className="ShipOrder">
-                                        <div>{order._id}</div>
+                                        <div id="idOrder">Mã đơn hàng: {order._id}</div>
                                         <span>Địa chỉ: {order.shippingInfo.address}, {order.shippingInfo.state}, {order.shippingInfo.country}</span>
                                         <div className="ShipOrderProducts">
                                             {order.orderItems &&
@@ -84,12 +80,12 @@ const MyShipOrder = () => {
                                                             {item.name}
                                                         </Link>{" "}
                                                         <span>
-                                                    {item.quantity} X {item.price.toLocaleString()} VND 
+                                                    {item.quantity} X {item.price.toLocaleString()}
                                                 </span>
                                                     </div>
                                                 ))}
                                         </div>
-                                        <span className="price">{order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
+                                        <span className="price">Tổng tiền: {order.totalPrice && (order.totalPrice).toLocaleString()}</span>
                                     </div>
                                     {order.orderStatus === 'Chờ lấy hàng' && 
                                     <div className="Button">

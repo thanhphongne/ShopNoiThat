@@ -24,7 +24,7 @@ const Sidebar = () => {
         </Link>
         <Link to="/admin/dashboard">
             <p>
-            <DashboardIcon /> Quản Trị
+            <DashboardIcon /> Thống kê
             </p>
         </Link>
         <Link>

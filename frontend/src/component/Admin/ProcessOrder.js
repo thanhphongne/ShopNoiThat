@@ -148,7 +148,7 @@ const ProcessOrder = ({  match }) => {
                                 : "redColor"
                             }
                         >
-                            {order.orderStatus && order.orderStatus}
+                            {order.orderStatus && order.orderStatus} lúc: { order.deliveredAt && order.deliveredAt.substring(11,16)} ngày { order.deliveredAt && order.deliveredAt.substring(0,10)}
                         </p>
                         </div>
                     </div>
