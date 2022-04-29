@@ -98,7 +98,7 @@ const ProductDetails = ({ match }) => {
             dispatch(clearErrors());
         }
         if(success) {
-            alert.success('Đã đăng bình luận sản phẩm');
+            alert.success('Đánh giá sản phẩm thành công');
             dispatch({type: NEW_REVIEW_RESET})
         }
         dispatch(getProductDetails(match.params.id))
@@ -185,7 +185,7 @@ const ProductDetails = ({ match }) => {
                         open={open}
                         onClose={submitReviewToggle}
                     >
-                        <DialogTitle>Đăng bình luận</DialogTitle>
+                        <DialogTitle>Đánh giá</DialogTitle>
                         <DialogContent className="submitDialog">
                         <Rating
                             onChange={(e) => setRating(e.target.value)}

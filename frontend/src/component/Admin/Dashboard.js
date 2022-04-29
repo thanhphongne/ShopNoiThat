@@ -11,6 +11,7 @@ import { getAllUsers } from "../../actions/userAction.js";
 import { getAllBills } from "../../actions/billAction.js";
 import MetaData from "../layout/MetaData";
 
+
 const Dashboard = () => {
     const dispatch = useDispatch();
 
@@ -24,7 +25,7 @@ const Dashboard = () => {
 
 
     let outOfStock = 0;
-
+    
     products &&
         products.forEach((item) => {
         if (item.Stock === 0) {
@@ -42,7 +43,7 @@ const Dashboard = () => {
     let totalAmount = 0;
     let totalBill = 0
     orders &&
-        orders.forEach((item) => {
+        orders.filter(item => item.orderStatus === 'Đã nhận hàng').forEach((item) => {
         totalAmount += item.totalPrice;
         });
     bills &&
@@ -67,7 +68,6 @@ const Dashboard = () => {
         },
         ],
     };
-    
 
     const doughnutState = {
         labels: ["Hết hàng", "Còn hàng"],
@@ -79,6 +79,28 @@ const Dashboard = () => {
         },
         ],
     };
+
+    // let listProductSaled = new Array({})
+
+    // orders && orders.forEach(order => {
+    //     console.log(typeof order.orderItems);
+    //     listProductSaled.push(order.orderItems)// choor nayf push do cai mang
+    // })
+    // console.log(listProductSaled);
+    // let countProductSaled = [];
+
+    // products && products.forEach(product => {
+    //     let count = 0
+    //     listProductSaled.filter(item => item.product === product._id)
+    //     .forEach(item => {
+    //         console.log(item);
+    //         count += item.quantity
+    //     })
+    //     if(count>0) {
+    //         countProductSaled.push(product.name, count)
+    //     }
+    // })
+    // console.log(countProductSaled);
 
     return (
         <div className="dashboard">
@@ -117,7 +139,6 @@ const Dashboard = () => {
                 </Link>
             </div>
             </div>
-
             <div className="lineChart">
             <Line data={lineState} />
             </div>

@@ -89,8 +89,8 @@ const MyShipOrder = () => {
                                     </div>
                                     {order.orderStatus === 'Chờ lấy hàng' && 
                                     <div className="Button">
-                                            <button onClick={() => denyHandler(order._id)}>Từ chối</button>
-                                            <button onClick={() => acceptHandler(order._id)}>Chấp nhận</button>
+                                            <button className="accept" onClick={() => acceptHandler(order._id)}>Chấp nhận</button>
+                                            <button className="deny" onClick={() => denyHandler(order._id)}>Từ chối</button>
                                     </div>
                                     }
                                 </div>

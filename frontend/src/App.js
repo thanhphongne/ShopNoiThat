@@ -76,7 +76,7 @@ function App() {
 
     return (
         <Router>
-        <Header />
+        { user && user.role !== 'shipper' && <Header />}
 
         {isAuthenticated && <UserOptions user={user} />}
 

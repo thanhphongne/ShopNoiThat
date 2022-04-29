@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ReactNavbar } from 'overlay-navbar';
 import logo from '../../../images/logo.png';
+import './Header.css'
 
 const options = {
     burgerColorHover: '#eb4034',
@@ -36,7 +37,11 @@ const options = {
 };
 
 const Header = () => {
-    return <ReactNavbar {...options} />;
+    return (
+        <Fragment>
+            <ReactNavbar {...options} />
+        </Fragment>
+    );
 };
 
 export default Header;
