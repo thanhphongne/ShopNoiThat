@@ -4,6 +4,9 @@ import {
     LOGIN_SUCCESS,
     REGISTER_USER_REQUEST,
     REGISTER_USER_SUCCESS,
+    CREATE_USER_FAIL,
+    CREATE_USER_REQUEST,
+    CREATE_USER_SUCCESS,
     REGISTER_USER_FAIL,
     LOAD_USER_REQUEST,
     LOAD_USER_SUCCESS,
@@ -106,6 +109,20 @@ export const register = (userData) => async (dispatch) => {
     } catch (error) {
     dispatch({
         type: REGISTER_USER_FAIL,
+        payload: error.response.data.message,
+    });
+    }
+};
+// Register
+export const createUser = (userData) => async (dispatch) => {
+    try {
+    dispatch({ type: CREATE_USER_REQUEST });
+    const { data } = await axios.post(`/api/v1/admin/user/create`, userData);
+
+    dispatch({ type: CREATE_USER_SUCCESS, payload: data.user });
+    } catch (error) {
+    dispatch({
+        type: CREATE_USER_FAIL,
         payload: error.response.data.message,
     });
     }

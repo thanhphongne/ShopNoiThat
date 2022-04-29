@@ -5,6 +5,9 @@ import {
     REGISTER_USER_REQUEST,
     REGISTER_USER_SUCCESS,
     REGISTER_USER_FAIL,
+    CREATE_USER_REQUEST,
+    CREATE_USER_SUCCESS,
+    CREATE_USER_FAIL,
     LOAD_USER_REQUEST,
     LOAD_USER_SUCCESS,
     LOAD_USER_FAIL,
@@ -38,6 +41,7 @@ import {
     USER_DETAILS_REQUEST,
     USER_DETAILS_SUCCESS,
     USER_DETAILS_FAIL,
+    CREATE_USER_RESET,
     CLEAR_ERRORS,
 } from "../constants/userConstants";
 
@@ -59,6 +63,7 @@ export const userReducer = (state = { user: {} }, action) => {
         isAuthenticated: true,
         user: action.payload,
         };
+    
 
     case LOGOUT_SUCCESS:
         return {
@@ -83,6 +88,7 @@ export const userReducer = (state = { user: {} }, action) => {
         user: null,
         // error: action.payload,
         };
+    
 
     case LOGOUT_FAIL:
         return {
@@ -163,6 +169,45 @@ export const profileReducer = (state = {}, action) => {
         return state;
     }
 };
+export const createUserReducer = (state = {}, action) => {
+    switch (action.type) {
+        case CREATE_USER_REQUEST:
+            return {
+            ...state,
+            loading: true,
+            };
+    
+        case CREATE_USER_SUCCESS:
+            return {
+            ...state,
+            loading: false,
+            isCreated: true,
+            message: action.payload.message,
+            };
+
+        case CREATE_USER_FAIL:
+            return {
+            ...state,
+            loading: false,
+            error: action.payload,
+            };
+    
+        case CREATE_USER_RESET:
+            return {
+            ...state,
+            isCreated: false,
+            };
+    
+        case CLEAR_ERRORS:
+            return {
+            ...state,
+            error: null,
+            };
+    
+        default:
+            return state;
+        }
+}
 
 export const forgotPasswordReducer = (state = {}, action) => {
     switch (action.type) {

@@ -33,6 +33,7 @@ import Dashboard from './component/Admin/Dashboard'
 import LoginAdmin from './component/Admin/LoginAdmin'
 import ProductList from './component/Admin/ProductList'
 import NewProduct from './component/Admin/NewProduct';
+import CreateUser from './component/Admin/CreateUser';
 import UpdateProduct from './component/Admin/UpdateProduct';
 import OrderList from './component/Admin/OrderList';
 import ProcessOrder from './component/Admin/ProcessOrder';
@@ -151,6 +152,12 @@ function App() {
             path="/admin/product"
             isAdmin={true}
             component={NewProduct}
+            />
+            <ProtectedRoute
+            exact
+            path="/admin/user"
+            isAdmin={true}
+            component={CreateUser}
             />
 
             <ProtectedRoute

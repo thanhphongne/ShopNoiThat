@@ -19,6 +19,7 @@ import {
     forgotPasswordReducer,
     allUsersReducer,
     userDetailsReducer,
+    createUserReducer
 } from './reducers/userReducer';
 import { cartReducer } from './reducers/cartReducer';
 import {
@@ -57,7 +58,8 @@ const reducer = combineReducers({
     bills: billsReducer,
     bill: billReducer,
     newBill: newBillReducer,
-    billDetails: billDetailsReducer
+    billDetails: billDetailsReducer,
+    createUser: createUserReducer
 });
 
 let initialState = {

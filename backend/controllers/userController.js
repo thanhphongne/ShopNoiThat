@@ -27,6 +27,21 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     sendToken(user, 201, res)
 })
 
+exports.createUser = catchAsyncErrors(async (req, res, next) => {
+    const {name, email, password, role} = req.body
+    
+    const user = await User.create({
+        name, email, password, role,
+        avatar: {
+            public_id: "profile",
+            url: "/Profile.png",
+        }
+    })
+    res.status(201).json({
+        success: true,
+        user
+    })
+})
 
 // Login User
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
@@ -76,7 +91,7 @@ exports.loginAdmin = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHander("Email hoặc mật khẩu không đúng", 401));
     }
 
-    if(user.role !== 'admin'){
+    if(user.role === 'Khách hàng'){
         return next(new ErrorHander("Tài khoản của bạn không phải tài khoản quản trị"))
     }
 
@@ -329,9 +344,9 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHander(`Không tìm thấy người dùng nào với id: ${req.params.id}`));
     }
 
-    const imageId = user.avatar.public_id;
+    const imageId = user.avatar.public_id ? user.avatar.public_id : null;
 
-    await cloudinary.v2.uploader.destroy(imageId)
+    imageId && await cloudinary.v2.uploader.destroy(imageId)
 
     await user.remove()
 

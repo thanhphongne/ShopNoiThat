@@ -27,7 +27,7 @@ const UserOptions = ({ user }) => {
         { icon: <ExitToAppIcon />, name: 'Đăng  xuất', func: logoutUser },
     ];
 
-    if (user.role === 'admin') {
+    if (user.role !== 'Khách hàng') {
         options.unshift({
             icon: <DashbroardIcon />,
             name: 'Quản trị',

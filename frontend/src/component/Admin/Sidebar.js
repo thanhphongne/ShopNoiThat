@@ -65,11 +65,21 @@ const Sidebar = () => {
             </TreeItem>
             </TreeView>
         </Link>
-        
-        <Link to="/admin/users">
-            <p>
-            <PeopleIcon /> Người Dùng
-            </p>
+        <Link>
+            <TreeView
+            defaultCollapseIcon={<ExpandMoreIcon />}
+            defaultExpandIcon={<PeopleIcon />}
+            >
+            <TreeItem nodeId="1" label="Người dùng">
+                <Link to="/admin/users">
+                <TreeItem nodeId="2" label="Tát cả người dùng" icon={<PostAddIcon />} />
+                </Link>
+
+                <Link to="/admin/user">
+                <TreeItem nodeId="3" label="Tạo người dùng" icon={<AddIcon />} />
+                </Link>
+            </TreeItem>
+            </TreeView>
         </Link>
         <Link to="/admin/reviews">
             <p>
