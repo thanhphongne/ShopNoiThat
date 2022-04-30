@@ -33,10 +33,14 @@ const UserOptions = ({ user }) => {
             name: 'Quản trị',
             func: dashboard,
         });
+        options.splice(2,2)
+    }
+    if (user.role === 'shipper') {
+        options.shift()
     }
 
     function dashboard() {
-        history.push('/admin/dashboard');
+            history.push('/admin/dashboard');
     }
     function orders() {
         history.push('/orders');
@@ -50,9 +54,6 @@ const UserOptions = ({ user }) => {
     function logoutUser() {
         dispatch(logout());
         alert.success('Đăng xuất thành công');
-    }
-    if(user.role === 'shipper'){
-        options.splice(1,2)
     }
 
     return (

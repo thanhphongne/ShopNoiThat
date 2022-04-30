@@ -11,12 +11,12 @@ router.route('/order/cancel/:id').put(isAuthenticatedUser, cancelOrder)
 
 router.route('/orders/me').get(isAuthenticatedUser, myOrders)
 
-router.route('/admin/orders').get(isAuthenticatedUser,authorizeRoles('admin'), getAllOrders);
+router.route('/admin/orders').get(isAuthenticatedUser,authorizeRoles('admin', 'Nhân viên kho', 'Nhân viên bán hàng'), getAllOrders);
 router.route('/shipper/orders').get(isAuthenticatedUser,authorizeRoles('shipper'), myShipping);
 
 router
     .route('/admin/order/:id')
-        .put(isAuthenticatedUser, authorizeRoles('admin') , updateOrder)
+        .put(isAuthenticatedUser, authorizeRoles('admin', 'Nhân viên bán hàng') , updateOrder)
         .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteOrder)
 
 router.route('/shipper/order/:id').put(isAuthenticatedUser, authorizeRoles('shipper') , updateOrder)

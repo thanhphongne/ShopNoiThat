@@ -6,13 +6,13 @@ const { isAuthenticatedUser, authorizeRoles } = require('../middleware/auth');
 
 router
     .route("/admin/bills")
-    .get(isAuthenticatedUser, authorizeRoles("admin"), getAllBills);
+    .get(isAuthenticatedUser, authorizeRoles("admin", 'Nhân viên kho', 'Nhân viên bán hàng'), getAllBills);
 
-router.route('/admin/bill/new').post(isAuthenticatedUser, authorizeRoles('admin'),  newBill);
+router.route('/admin/bill/new').post(isAuthenticatedUser, authorizeRoles('admin', 'Nhân viên kho'),  newBill);
 router
     .route('/admin/bill/:id')
-        .put(isAuthenticatedUser, authorizeRoles('admin'), updateBill)
+        .put(isAuthenticatedUser, authorizeRoles('admin', 'Nhân viên kho'), updateBill)
         .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteBill)
-        .get(isAuthenticatedUser, authorizeRoles('admin'),getBillDetails);
+        .get(isAuthenticatedUser, authorizeRoles('admin', 'Nhân viên kho'),getBillDetails);
 
 module.exports = router;

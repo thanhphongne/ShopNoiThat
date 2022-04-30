@@ -52,6 +52,7 @@ import {
         myForm.set("email", email);
         myForm.set('password', '12345678');
         myForm.set("role", role);
+        console.log(myForm)
 
         dispatch(createUser(myForm));
     };

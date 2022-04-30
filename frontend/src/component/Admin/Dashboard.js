@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar.js";
 import "./Dashboard.css";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { Doughnut, Line } from "react-chartjs-2";
+import { Bar, Doughnut, Line } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction.js";
@@ -80,27 +80,25 @@ const Dashboard = () => {
         ],
     };
 
-    // let listProductSaled = new Array({})
+    let SaleProductName = [];
+    let SaleProductNum = [];
 
-    // orders && orders.forEach(order => {
-    //     console.log(typeof order.orderItems);
-    //     listProductSaled.push(order.orderItems)// choor nayf push do cai mang
-    // })
-    // console.log(listProductSaled);
-    // let countProductSaled = [];
-
-    // products && products.forEach(product => {
-    //     let count = 0
-    //     listProductSaled.filter(item => item.product === product._id)
-    //     .forEach(item => {
-    //         console.log(item);
-    //         count += item.quantity
-    //     })
-    //     if(count>0) {
-    //         countProductSaled.push(product.name, count)
-    //     }
-    // })
-    // console.log(countProductSaled);
+    products &&
+        products.forEach(item => {
+            if(item.numOfSale >0) {
+                SaleProductName.push(item.name)
+                SaleProductNum.push(item.numOfSale)
+            }
+        })
+    
+    const barState = {
+        labels: SaleProductName,
+        datasets: [
+        {
+            data: SaleProductNum,
+        },
+        ],
+    };
 
     return (
         <div className="dashboard">
@@ -142,6 +140,13 @@ const Dashboard = () => {
             <div className="lineChart">
             <Line data={lineState} />
             </div>
+
+            {SaleProductNum.length >0 && (
+                <div className="lineChart">
+                <Bar data={barState} />
+                </div>
+            )}
+
 
             <div className="doughnutChart">
             <Doughnut data={doughnutState} />

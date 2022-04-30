@@ -44,6 +44,11 @@ const productSchema = mongoose.Schema({
         maxLength: [4, 'Số lượng không được vượt quá 4 chữ số'],
         default: 1
     },
+    numOfSale: {
+        type: Number,
+        maxLength: [4, 'Số lượng không được vượt quá 4 chữ số'],
+        default: 0
+    },
     numOfReviews: {
         type: Number,
         default: 0

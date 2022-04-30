@@ -12,7 +12,8 @@ const { registerUser,
         getAllUsers,
         getSingleUser,
         updateUserRole,
-        deleteUser
+        deleteUser,
+        createUser
 } = require('../controllers/userController')
 
 const { isAuthenticatedUser, authorizeRoles } = require('../middleware/auth');
@@ -23,6 +24,7 @@ router.route('/register').post(registerUser)
 
 router.route('/login').post(loginUser)
 router.route('/admin/login').post(loginAdmin)
+router.route('/admin/user/create').post(isAuthenticatedUser, authorizeRoles('admin'), createUser)
 router.route('/shipper/login').post(loginShipper)
 
 router.route('/password/forgot').post(forgotPassword)
@@ -37,7 +39,7 @@ router.route('/password/update').put(isAuthenticatedUser, updatePassword)
 
 router.route('/me/update').put(isAuthenticatedUser, updateProfile)
 
-router.route('/admin/users').get(isAuthenticatedUser, authorizeRoles('admin'), getAllUsers)
+router.route('/admin/users').get(isAuthenticatedUser, authorizeRoles('admin', 'Nhân viên kho', 'Nhân viên bán hàng'), getAllUsers)
 
 router
         .route('/admin/user/:id')

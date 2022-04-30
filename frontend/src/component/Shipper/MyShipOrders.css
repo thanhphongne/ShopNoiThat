@@ -13,6 +13,7 @@
         flex-direction: column;
         font: 400 1.5vmax "Roboto";
         height: 100vh;
+        top: 0;
     }
     
     #myShipOrdersHeading {
