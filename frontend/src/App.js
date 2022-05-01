@@ -33,6 +33,8 @@ import Dashboard from './component/Admin/Dashboard'
 import LoginAdmin from './component/Admin/LoginAdmin'
 import ProductList from './component/Admin/ProductList'
 import NewProduct from './component/Admin/NewProduct';
+import NewBlog from './component/Admin/NewBlog';
+import BlogsList from './component/Admin/BlogsList';
 import CreateUser from './component/Admin/CreateUser';
 import UpdateProduct from './component/Admin/UpdateProduct';
 import OrderList from './component/Admin/OrderList';
@@ -49,6 +51,7 @@ import MyShipOrder from './component/Shipper/MyShipOrder'
 import ProcessShipOrder from './component/Shipper/ProcessShipOrder'
 import BillList from './component/Admin/BillList'
 import UpdateBill from './component/Admin/UpdateBill';
+import UpdateBlog from './component/Admin/UpdateBlog';
 
 function App() {
     const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -149,6 +152,12 @@ function App() {
             />
             <ProtectedRoute
             exact
+            path="/admin/blogs"
+            isAdmin={true}
+            component={BlogsList}
+            />
+            <ProtectedRoute
+            exact
             path="/admin/product"
             isAdmin={true}
             component={NewProduct}
@@ -165,6 +174,12 @@ function App() {
             path="/admin/bill"
             isAdmin={true}
             component={NewBill}
+            />
+            <ProtectedRoute
+            exact
+            path="/admin/blog"
+            isAdmin={true}
+            component={NewBlog}
             />
             <ProtectedRoute
             exact
@@ -185,6 +200,14 @@ function App() {
             isAdmin={true}
             component={UpdateProduct}
             />
+
+            <ProtectedRoute
+            exact
+            path="/admin/blog/:id"
+            isAdmin={true}
+            component={UpdateBlog}
+            />
+
             <ProtectedRoute
             exact
             path="/admin/orders"

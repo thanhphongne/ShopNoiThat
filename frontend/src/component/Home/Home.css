@@ -1,5 +1,6 @@
 .banner {
-    background-image: url(../../images/homepage.jpg);
+    background-image: url(../../images/homepage4.jpg) ;
+    background-size: 100% 120%;
     height: 100vmin;
     display: flex;
     flex-direction: column;
@@ -7,15 +8,20 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    transition: transform 0.5s;
 }
-
+.banner:hover {
+    transform: scale(1.1);
+}
 .banner > h1 {
     margin: 5vmax;
-    font: 300 1.4vmax 'Lucida Sans';
+    font: 500 2vmax ;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(252, 255, 240);
 }
 
 .banner > p {
-    font: 600 2.5vmax 'Roboto';
+    font: 600 2.5vmax 'Battambang';
 }
 
 .banner > a > button {

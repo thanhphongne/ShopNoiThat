@@ -7,6 +7,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import AddIcon from "@material-ui/icons/Add";
 import DescriptionIcon from '@material-ui/icons/Description';
+import BookOutlinedIcon from '@material-ui/icons/BookOutlined';
 import ImportExportIcon from "@material-ui/icons/ImportExport";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -61,6 +62,22 @@ const Sidebar = () => {
 
                 <Link to="/admin/bill">
                 <TreeItem nodeId="3" label="Thêm hóa đơn mới" icon={<AddIcon />} />
+                </Link>
+            </TreeItem>
+            </TreeView>
+        </Link>
+        <Link>
+            <TreeView
+            defaultCollapseIcon={<ExpandMoreIcon />}
+            defaultExpandIcon={<BookOutlinedIcon/>}
+            >
+            <TreeItem nodeId="1" label="Bài viết">
+                <Link to="/admin/blogs">
+                <TreeItem nodeId="2" label="Tát cả bài viết" icon={<PostAddIcon />} />
+                </Link>
+
+                <Link to="/admin/blog">
+                <TreeItem nodeId="3" label="Thêm bài viết mới" icon={<AddIcon />} />
                 </Link>
             </TreeItem>
             </TreeView>

@@ -35,6 +35,12 @@ import {
     billReducer,
     billDetailsReducer
 } from "./reducers/billReducer";
+import {
+    blogsReducer,
+    newBlogReducer,
+    blogReducer,
+    blogDetailsReducer
+} from "./reducers/blogReducer";
 
 const reducer = combineReducers({
     products: productsReducer,
@@ -59,6 +65,10 @@ const reducer = combineReducers({
     bill: billReducer,
     newBill: newBillReducer,
     billDetails: billDetailsReducer,
+    blogs: blogsReducer,
+    blog: blogReducer,
+    newBlog: newBlogReducer,
+    blogDetails: blogDetailsReducer,
     createUser: createUserReducer
 });
 

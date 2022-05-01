@@ -31,8 +31,8 @@ const Home = ({history}) => {
                 <Fragment>
                     <MetaData title="Nội Thất Cần Thơ" />
                     <div className="banner">
-                    <p>Chào Mừng Bạn Đến Với Nội Thất Cần Thơ</p>
-                    <h1>Những Sản Phẩm Tuyệt Vời Ở Bên Dưới</h1>
+                    <p><b>Chào Mừng Bạn Đến Với Nội Thất Cần Thơ</b></p>
+                    <h1><b>Những Sản Phẩm Tuyệt Vời Ở Bên Dưới</b></h1>
                     
                     <a href="#container">
                     <button>
@@ -41,6 +41,8 @@ const Home = ({history}) => {
                     </a>
                     </div>
 
+                    <h2 className="homeHeading">Bài Viết Nổi Bật</h2>
+                    
                     <h2 className="homeHeading">Sản Phẩm Nổi Bật</h2>
 
                     <div className="container" id="container">

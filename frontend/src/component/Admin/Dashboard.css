@@ -3,6 +3,7 @@
     max-width: 100%;
     display: grid;
     grid-template-columns: 1fr 5fr;
+    top: 0;
     position: absolute;
 }
 
