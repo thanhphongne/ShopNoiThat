@@ -8,8 +8,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import Loader from '../layout/Loader/Loader';
 import { useAlert } from 'react-alert';
+import Search from '../Product/Search'
 
-const Home = () => {
+const Home = ({history}) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const { loading, error, products } = useSelector((state) => state.products);
@@ -30,14 +31,14 @@ const Home = () => {
                 <Fragment>
                     <MetaData title="Nội Thất Cần Thơ" />
                     <div className="banner">
-                        <p>Chào Mừng Bạn Đến Với Nội Thất Cần Thơ</p>
-                        <h1>Những Sản Phẩm Tuyệt Vời Ở Bên Dưới</h1>
-
-                        <a href="#container">
-                            <button>
-                                Click Me <CgMouse />
-                            </button>
-                        </a>
+                    <p>Chào Mừng Bạn Đến Với Nội Thất Cần Thơ</p>
+                    <h1>Những Sản Phẩm Tuyệt Vời Ở Bên Dưới</h1>
+                    
+                    <a href="#container">
+                    <button>
+                    Click Me <CgMouse />
+                    </button>
+                    </a>
                     </div>
 
                     <h2 className="homeHeading">Sản Phẩm Nổi Bật</h2>

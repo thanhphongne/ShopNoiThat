@@ -1,45 +1,53 @@
 import React, { Fragment } from 'react';
-import { ReactNavbar } from 'overlay-navbar';
-import logo from '../../../images/logo.png';
+import vi from '../../../images/vi.png';
 import './Header.css'
+import {AiOutlinePhone} from 'react-icons/ai'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
+import {VscAccount} from 'react-icons/vsc'
+import Search from '../../Product/Search';
+import { useHistory } from 'react-router-dom';
 
-const options = {
-    burgerColorHover: '#eb4034',
-    logo,
-    logoWidth: '20vmax',
-    navColor1: 'white',
-    logoHoverSize: '10px',
-    logoHoverColor: '#eb4034',
-    link1Text: 'Trang Chủ',
-    link2Text: 'Sản Phẩm',
-    link3Text: 'Liên Hệ',
-    link4Text: 'Thông Tin',
-    link1Url: '/',
-    link2Url: '/products',
-    link3Url: '/contact',
-    link4Url: '/about',
-    link1Size: '1.3vmax',
-    link1Color: 'rgba(35, 35, 35,0.8)',
-    nav1justifyContent: 'flex-start',
-    nav2justifyContent: 'flex-end',
-    nav3justifyContent: 'flex-start',
-    nav4justifyContent: 'flex-start',
-    link1ColorHover: '#eb4034',
-    link1Margin: '2vmax',
-    profileIconUrl: '/login',
-    profileIconColor: 'rgba(35, 35, 35,0.8)',
-    searchIconColor: 'rgba(35, 35, 35,0.8)',
-    cartIconColor: 'rgba(35, 35, 35,0.8)',
-    profileIconColorHover: '#eb4034',
-    searchIconColorHover: '#eb4034',
-    cartIconColorHover: '#eb4034',
-    cartIconMargin: '1vmax',
-};
 
 const Header = () => {
+    const history = useHistory();
     return (
         <Fragment>
-            <ReactNavbar {...options} />
+        <div className="navbar">
+            <div className="top-bar">
+                <div className="left-top-bar">
+                    <div className="lang">
+                        <img src={vi} alt="vietnamese" />
+                        <span>VN</span>
+                    </div>
+                    <div className="phone">
+                        <b>
+                        <AiOutlinePhone/>
+                        <span> +8437 765 8161</span>
+                        </b>
+                    </div>
+                    <div className="link">
+                        <a href="/about">Giới thiệu</a>
+                        <a href="/contact">Liên hệ</a>
+                        <a href="" className='red'>Khuyến mãi đặc biệt</a>
+                    </div>
+                </div>
+                <div className="right-top-bar">
+                    <a href="/cart">Giỏ hàng <AiOutlineShoppingCart/></a>
+                    <a href="/login"><VscAccount/></a>
+                </div>
+            </div>
+            <div className="bot-bar">
+                <div className="link-1">
+                    <b>Nội Thất Cần Thơ</b>
+                    <a href="/">Trang chủ</a>
+                    <a href="/products">Sản phẩm</a>
+                    <a href="/blogs">Bài viết</a>
+                </div>
+                <div className="search-box">
+                    <Search history={history}/>
+                </div>
+            </div>
+        </div>
         </Fragment>
     );
 };

@@ -41,11 +41,10 @@ const Search = ({ history }) => {
 
     return (
         <Fragment>
-            <MetaData title="Tìm Kiếm Sản Phẩm -- Nội Thất Cần Thơ" />
             <form className="searchBox" onSubmit={searchSubmitHandler}>
                 <input
                     type="text"
-                    placeholder="Nhập tên sản phẩm"
+                    placeholder="Tìm sản phẩm..."
                     value={transcript ? transcript : keyword}
                     onChange={(e) => setKeyword(e.target.value) }
                 />

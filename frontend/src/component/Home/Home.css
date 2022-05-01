@@ -6,6 +6,7 @@
     text-align: center;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .banner > h1 {
@@ -53,14 +54,16 @@
     padding: 1vmax;
     margin: 5vmax auto;
     color: rgb(0, 0, 0, 0.7);
+    box-sizing: border-box;
 }
 .container {
     display: flex;
-    margin: 2vmax auto;
+    margin:  auto;
     width: 80vmax;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 .productCard {
