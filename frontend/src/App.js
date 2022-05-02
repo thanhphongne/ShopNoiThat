@@ -52,6 +52,8 @@ import ProcessShipOrder from './component/Shipper/ProcessShipOrder'
 import BillList from './component/Admin/BillList'
 import UpdateBill from './component/Admin/UpdateBill';
 import UpdateBlog from './component/Admin/UpdateBlog';
+import Blogs from './component/Blog/Blogs';
+import BlogDetail from './component/Blog/BlogDetails';
 
 function App() {
     const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -129,6 +131,10 @@ function App() {
             <Route exact path="/cart" component={Cart} />
 
             <ProtectedRoute exact path="/shipping" component={Shipping} />
+
+            <ProtectedRoute exact path="/blogs" component={Blogs} />
+            
+            <ProtectedRoute exact path="/blog/:id" component={BlogDetail} />
 
             <ProtectedRoute exact path="/success" component={Success} />
 

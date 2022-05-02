@@ -1,5 +1,6 @@
 .banner {
     background-image: url(../../images/homepage4.jpg) ;
+    backface-visibility:visible;
     background-size: 100% 120%;
     height: 100vmin;
     display: flex;
@@ -18,10 +19,15 @@
     font: 500 2vmax ;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(252, 255, 240);
+    text-shadow: 2px 2px 2px #000000;
 }
 
 .banner > p {
     font: 600 2.5vmax 'Battambang';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(252, 255, 240);
+    text-shadow: 2px 2px 2px #000000;
+    font-weight: bold;
 }
 
 .banner > a > button {
@@ -145,4 +151,55 @@
         margin: 0 0.5vmax;
         font: 300 1vmax 'Roboto';
     }
+}
+.blogs {
+    display: flex;
+    margin:  auto;
+    width: 80vmax;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.chan {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40vh;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-bottom: 5vh;
+    border-bottom: 10px solid rgba(243, 241, 241, 0.274);
+    overflow: hidden;
+}
+.le {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 40vh;
+    margin-bottom: 5vh;
+    border-bottom: 10px solid rgba(243, 241, 241, 0.274);
+    overflow: hidden;
+
+
+}
+.left {
+    width: 49%;
+}
+.left b {
+    font-size: 3vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.left p {
+    font-size: 1.5vh;
+
+}
+.right {
+    width: 49%;
+}
+.right img {
+    width: 100%;
+
 }

@@ -1,0 +1,63 @@
+.blogHeading {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 1.4vmax;
+    border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+    width: 20vmax;
+    padding: 1vmax;
+    margin: 5vmax auto;
+    color: rgb(0, 0, 0, 0.7);
+    box-sizing: border-box;
+}
+.blog {
+    display: flex;
+    margin:  auto;
+    width: 80vmax;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 10vmax;
+}
+.chan {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40vh;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-bottom: 5vh;
+    border-bottom: 10px solid rgba(243, 241, 241, 0.274);
+    overflow: hidden;
+}
+.le {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 40vh;
+    margin-bottom: 5vh;
+    border-bottom: 10px solid rgba(243, 241, 241, 0.274);
+    overflow: hidden;
+
+
+}
+.left {
+    width: 49%;
+}
+.left b {
+    font-size: 3vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.left p {
+    font-size: 3vh;
+
+}
+.right {
+    width: 49%;
+}
+.right img {
+    width: 100%;
+
+}

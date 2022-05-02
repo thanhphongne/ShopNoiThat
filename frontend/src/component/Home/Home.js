@@ -2,18 +2,20 @@ import React, { Fragment } from 'react';
 import { CgMouse } from 'react-icons/cg';
 import './Home.css';
 import ProductCard from './ProductCard.js';
+import BlogCard from './BlogCard.js';
 import MetaData from '../layout/MetaData';
 import { clearErrors, getProduct } from '../../actions/productAction';
+import {  getAllBlogs } from '../../actions/blogAction';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import Loader from '../layout/Loader/Loader';
 import { useAlert } from 'react-alert';
-import Search from '../Product/Search'
 
 const Home = ({history}) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const { loading, error, products } = useSelector((state) => state.products);
+    const {blogs } = useSelector((state) => state.blogs);
 
     useEffect(() => {
         if (error) {
@@ -21,6 +23,7 @@ const Home = ({history}) => {
             dispatch(clearErrors());
         }
         dispatch(getProduct());
+        dispatch(getAllBlogs());
     }, [dispatch, error, alert]);
 
     return (
@@ -31,7 +34,7 @@ const Home = ({history}) => {
                 <Fragment>
                     <MetaData title="Nội Thất Cần Thơ" />
                     <div className="banner">
-                    <p><b>Chào Mừng Bạn Đến Với Nội Thất Cần Thơ</b></p>
+                    <p>Chào Mừng Bạn Đến Với Nội Thất Cần Thơ</p>
                     <h1><b>Những Sản Phẩm Tuyệt Vời Ở Bên Dưới</b></h1>
                     
                     <a href="#container">
@@ -42,10 +45,15 @@ const Home = ({history}) => {
                     </div>
 
                     <h2 className="homeHeading">Bài Viết Nổi Bật</h2>
-                    
+                    <div className="blogs" id="container">
+                        {blogs &&
+                            blogs.slice(0,3).map((blog, index) => (
+                                <BlogCard blog={blog} index={index}/>
+                            ))}
+                    </div>
                     <h2 className="homeHeading">Sản Phẩm Nổi Bật</h2>
 
-                    <div className="container" id="container">
+                    <div className="container" >
                         {products &&
                             products.map((product) => (
                                 <ProductCard product={product} />
