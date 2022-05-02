@@ -62,12 +62,12 @@ const MyOrders = () => {
                                                     {item.name}
                                                 </Link>{" "}
                                                 <span>
-                                                    {item.quantity} X {item.price.toLocaleString()} VND 
+                                                    {item.quantity} X {item.price.toLocaleString()}
                                                 </span>
                                             </div>
                                         ))}
                                     </div>
-                                    <span>Tổng cộng: {order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
+                                    <span className="totalPrice">Tổng cộng: {order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
                                 </Link>
                                 </div>
                             ))

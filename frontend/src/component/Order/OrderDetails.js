@@ -66,7 +66,7 @@ const OrderDetails = ({ match ,  history }) => {
             <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
             <OrderStep activeStep={numStep(order.orderStatus)}/>
-                <Typography component="h1">
+                <Typography component="h3">
                 Đơn hàng #{order && order._id}
                 </Typography>
                 <Typography>Thông tin nhận hàng</Typography>

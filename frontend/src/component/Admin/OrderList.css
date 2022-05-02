@@ -119,7 +119,7 @@
     width: 5vmax;
 }
 .searchOrder{
-    background-color: tomato;
+    background-color: black;
     height: 4vh;
     display: flex;
     justify-content: center;
@@ -143,6 +143,9 @@
 .searchOrderResult{
     position: relative;
     z-index: 10;
+}
+.totalPrice {
+    color: red;
 }
 @media screen and (max-width: 600px) {
     .productListTable div {

@@ -83,16 +83,6 @@ const Shipping = ({ history }) => {
             
             <h3>Thông tin nhận hàng đã lưu:</h3>
 
-            {// user.shippingInfo ?
-            //     <div className="oldAddress" >
-            //         {user.shippingInfo.map((shipping) => (
-            //             <div key={shipping._id}>
-            //             <p>{shipping.phoneNo}, {shipping.address}, {shipping.state}, {shipping.country}</p>
-            //             <span><button onClick={() => handleOldAdress({shipping})}>Chọn</button></span>
-            //             </div>
-            //         ))}
-            //     </div> : <h4>Không có thông tin nào được lưu</h4>
-            }
             {user.shippingInfo ?
                 <select className="oldAddress" onChange={(e) => handleOldAdress(e.target.value)}>
                     {user.shippingInfo.map((shipping) => (

@@ -2,8 +2,8 @@
     background-color: white;
 }
 
-.orderDetailsContainer > h1 {
-    font: 300 3vmax "Roboto";
+.orderDetailsContainer > h3 {
+    font: 300 2vmax "Roboto";
     margin: 4vmax 0;
     color: tomato;
 }

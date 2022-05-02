@@ -60,7 +60,11 @@
 }
 #orderId {
     width: 100%;
-    background-color: tomato;
+    background-color: rgb(3, 2, 2);
+    color: white;
+}
+.totalPrice {
+    color: red;
 }
 .myOrderHeading{
     display: flex;

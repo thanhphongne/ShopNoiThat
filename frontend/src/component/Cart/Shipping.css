@@ -31,8 +31,10 @@ h3 {
     font: 1vw "Roboto";
     margin-top: 10px;
     width: 100%;
+    padding: 0 10%;
+    height: 5vh;
+    border: 1px solid rgba(0, 0, 0, 0.267);
 }
-
 
 .shippingForm{
     display: flex;
@@ -73,7 +75,7 @@ h3 {
 
 .shippingBtn {
     border: none;
-    background-color: tomato;
+    background-color: rgb(3, 2, 2);
     color: white;
     font: 300 1vmax "Roboto";
     width: 100%;
@@ -85,7 +87,7 @@ h3 {
 }
 
 .shippingBtn:hover {
-    background-color: rgb(179, 66, 46);
+    background-color: rgba(3, 2, 2, 0.8);
 }
 
 @media screen and (max-width: 600px) {

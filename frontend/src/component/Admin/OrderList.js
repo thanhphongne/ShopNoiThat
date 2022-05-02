@@ -137,7 +137,7 @@ const OrderList = ({ history }) => {
                                         </div>
                                     ))}
                                 </div>
-                                <span>Tổng cộng: {order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
+                                <span className="totalPrice">Tổng cộng: {order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
                                 <div className="action">
                                     <Button onClick={() => deleteOrderHandler(order._id)}><DeleteIcon/></Button>
                                     <Link to={`/admin/order/${order._id}`}>
