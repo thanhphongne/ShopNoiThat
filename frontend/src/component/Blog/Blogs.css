@@ -40,8 +40,6 @@
     margin-bottom: 5vh;
     border-bottom: 10px solid rgba(243, 241, 241, 0.274);
     overflow: hidden;
-
-
 }
 .left {
     width: 49%;
@@ -60,4 +58,24 @@
 .right img {
     width: 100%;
 
+}
+@media screen and (max-width: 600px) {
+    .blog {
+        width: 100%;
+        padding: 0 2vmax;
+        box-sizing: border-box;
+        margin: 0;
+    }
+    .left b {
+        font-size: small;
+    }
+    .left p {
+        font-size: small;
+    }
+    .chan {
+        height: 25vh;
+    }
+    .le {
+        height: 25vh;
+    }
 }

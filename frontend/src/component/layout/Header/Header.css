@@ -83,6 +83,42 @@ a:hover {
 }
 @media screen and (max-width: 600px) {
     .navbar {
+        width: 100%;
+        top: -20px;
+    }
+    .top-bar {
+        width: 100%;
+    }
+    .lang {
         display: none;
     }
+    .phone {
+        display: none;
+    }
+    .red {
+        display: none;
+    }
+    .link {
+        display: flex;
+        width: 80%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .right-top-bar {
+        width: 30%;
+    }
+    .bot-bar {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .link-1 {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .search-box {
+        width: 100%;
+    }
+
 }

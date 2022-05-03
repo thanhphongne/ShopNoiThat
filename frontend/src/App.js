@@ -132,9 +132,9 @@ function App() {
 
             <ProtectedRoute exact path="/shipping" component={Shipping} />
 
-            <ProtectedRoute exact path="/blogs" component={Blogs} />
+            <Route exact path="/blogs" component={Blogs} />
             
-            <ProtectedRoute exact path="/blog/:id" component={BlogDetail} />
+            <Route exact path="/blog/:id" component={BlogDetail} />
 
             <ProtectedRoute exact path="/success" component={Success} />
 

@@ -129,29 +129,6 @@
     transform: translateY(-1vmax);
 }
 
-@media screen and (max-width: 600px) {
-    .productCard {
-        width: 10vmax;
-        margin-left: 3vmax;
-    }
-    .productCard > p {
-        font-size: 1.3vmax;
-    }
-
-    .productCard > div {
-        margin: 0vmax;
-        display: block;
-    }
-
-    .productCard > span {
-        font-size: 1.5vmax;
-    }
-
-    .productCard > div > span {
-        margin: 0 0.5vmax;
-        font: 300 1vmax 'Roboto';
-    }
-}
 .blogs {
     display: flex;
     margin:  auto;
@@ -182,8 +159,8 @@
     margin-bottom: 5vh;
     border-bottom: 10px solid rgba(243, 241, 241, 0.274);
     overflow: hidden;
-
-
+    
+    
 }
 .left {
     width: 49%;
@@ -201,5 +178,45 @@
 }
 .right img {
     width: 100%;
+    
+}
 
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+    .productCard {
+        width: 14vmax;
+        margin-left: 2vmax;
+    }
+    .productCard > p {
+        font-size: 1.3vmax;
+    }
+
+    .productCard > div {
+        margin: 0vmax;
+        display: block;
+    }
+
+    .productCard > span {
+        font-size: 1.5vmax;
+    }
+
+    .productCard > div > span {
+        margin: 0 0.5vmax;
+        font: 300 1vmax 'Roboto';
+    }
+    .left b{
+        font-size: 1vh;
+    }
+    .blogs {
+        width: 100%;
+        padding: 0 2vmax;
+    }
+    .chan {
+        height: 30vh;
+    }
+    .le {
+        height: 30vh;
+    }
 }
