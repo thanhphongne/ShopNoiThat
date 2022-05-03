@@ -141,9 +141,18 @@
 
 }
 .searchOrderResult{
-    position: relative;
+    position: absolute;
     z-index: 10;
-}
+    width: 83%;
+    height: 100vh;
+    top: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 20px;
+    font: 400 1.2vmax "Roboto";
+    background-color: rgb(218, 218, 218);
+} 
 .totalPrice {
     color: red;
 }

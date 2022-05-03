@@ -73,6 +73,7 @@ const OrderList = ({ history }) => {
             {
                 orderId && (
                 <div className="searchOrderResult">
+                    
                     {orders.filter(order => order._id===orderId).map(order => (
                         <div className="order">
                         <div id='orderId'>Mã đơn hàng: {order._id}</div>
@@ -81,10 +82,10 @@ const OrderList = ({ history }) => {
                                 ? "greenColor"
                                 : "redColor"
                             }>Trạng thái: {order.orderStatus}</div>
-                        <div className="MyorderProducts">
+                        <div className="orderProducts">
                         {order.orderItems &&
                             order.orderItems.map((item) => (
-                                <div key={item.product} className='Myproduct'>
+                                <div key={item.product} className='product'>
                                     <img src={item.image} alt="Product" />
                                     <Link to={`/product/${item.product}`}>
                                         {item.name}
@@ -95,10 +96,12 @@ const OrderList = ({ history }) => {
                                 </div>
                             ))}
                         </div>
-                        <span>Tổng cộng: {order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
-                                    <Link to={`/admin/order/${order._id}`}>
-                                    <EditIcon/></Link>
-                                    <Button onClick={() => deleteOrderHandler(order._id)}><DeleteIcon/></Button>
+                        <span className="red">Tổng cộng: {order.totalPrice && (order.totalPrice).toLocaleString()} VND</span>
+                        <div className="action">
+                            <Button onClick={() => deleteOrderHandler(order._id)}><DeleteIcon/></Button>
+                            <Link to={`/admin/order/${order._id}`}>
+                            <EditIcon/></Link>
+                                </div>
                                 </div>
                     ))
                 }
