@@ -29,7 +29,6 @@ const NewProduct = ({ history }) => {
     const [images, setImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
 
-    const categories = ['Bàn', 'Ghế', 'Tủ', 'Giường'];
 
 
     useEffect(() => {
@@ -141,14 +140,13 @@ const NewProduct = ({ history }) => {
 
                 <div>
                 <AccountTreeIcon />
-                <select onChange={(e) => setCategory(e.target.value)}>
-                    <option value="">Danh mục</option>
-                    {categories.map((cate) => (
-                    <option key={cate} value={cate}>
-                        {cate}
-                    </option>
-                    ))}
-                </select>
+                <input
+                    type="text"
+                    placeholder="Danh mục"
+                    required
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                />
                 </div>
 
                 <div>

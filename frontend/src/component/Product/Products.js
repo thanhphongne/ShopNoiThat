@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { useAlert } from 'react-alert';
 import MetaData from '../layout/MetaData';
 
-const categories = ['Tất cả', 'Bàn', 'Ghế', 'Tủ', 'Giường'];
+
 
 const Products = ({ match }) => {
     const dispatch = useDispatch();
@@ -23,12 +23,22 @@ const Products = ({ match }) => {
     const [ratings, setRatings] = useState(0);
     const {
         products,
+        Allproducts,
         loading,
         error,
         productsCount,
         resultPerPage,
         filteredProductsCount,
     } = useSelector((state) => state.products);
+
+    let categories = ['Tất cả'];
+    Allproducts && Allproducts.forEach(product => {
+        if (!categories.includes(product.category)) {
+            categories.push(product.category)
+        }
+    }
+    )
+    console.log(categories);
 
     const keyword = match.params.keyword;
     

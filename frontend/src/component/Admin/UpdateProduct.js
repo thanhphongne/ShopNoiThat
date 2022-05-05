@@ -165,17 +165,13 @@ import {
 
                 <div>
                 <AccountTreeIcon />
-                <select
+                <input
+                    type="text"
+                    placeholder="Danh mục"
+                    required
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                >
-                    <option value="">Choose Category</option>
-                    {categories.map((cate) => (
-                    <option key={cate} value={cate}>
-                        {cate}
-                    </option>
-                    ))}
-                </select>
+                />
                 </div>
 
                 <div>
