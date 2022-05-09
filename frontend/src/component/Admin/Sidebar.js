@@ -130,29 +130,33 @@ const Sidebar = () => {
                 </Fragment>
             )}
 
-            <Link>
-                <TreeView
-                    defaultCollapseIcon={<ExpandMoreIcon />}
-                    defaultExpandIcon={<PeopleIcon />}
-                >
-                    <TreeItem nodeId="1" label="Nhân viên">
-                        <Link to="/admin/users">
-                            <TreeItem
-                                nodeId="2"
-                                label="Danh sách nhân viên"
-                                icon={<PostAddIcon />}
-                            />
-                        </Link>
-                        <Link to="/admin/user">
-                            <TreeItem
-                                nodeId="3"
-                                label="Thêm nhân viên"
-                                icon={<AddIcon />}
-                            />
-                        </Link>
-                    </TreeItem>
-                </TreeView>
-            </Link>
+            {
+                (user && user.role === 'admin') && (
+                    <Link>
+                        <TreeView
+                            defaultCollapseIcon={<ExpandMoreIcon />}
+                            defaultExpandIcon={<PeopleIcon />}
+                        >
+                            <TreeItem nodeId="1" label="Nhân viên">
+                                <Link to="/admin/users">
+                                    <TreeItem
+                                        nodeId="2"
+                                        label="Danh sách nhân viên"
+                                        icon={<PostAddIcon />}
+                                    />
+                                </Link>
+                                <Link to="/admin/user">
+                                    <TreeItem
+                                        nodeId="3"
+                                        label="Thêm nhân viên"
+                                        icon={<AddIcon />}
+                                    />
+                                </Link>
+                            </TreeItem>
+                        </TreeView>
+                    </Link>
+                )
+            }
         </div>
     );
 };
