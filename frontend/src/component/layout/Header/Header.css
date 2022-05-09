@@ -32,7 +32,7 @@ a:hover {
     flex-direction: row;
     justify-content: space-between;
     padding: 10px 0;
-    border-bottom: 1px solid #F6F7F8;
+    border-bottom: 1px solid #f6f7f8;
     position: relative;
     align-items: center;
 }
@@ -49,10 +49,10 @@ a:hover {
     justify-content: space-between;
     align-items: center;
 }
-.red{
+.red {
     color: rgb(255, 34, 34);
 }
-.right-top-bar{
+.right-top-bar {
     display: flex;
     width: 7%;
     justify-content: space-between;
@@ -73,11 +73,11 @@ a:hover {
     height: 40px;
     width: 40%;
 }
-.link-1 b{
+.link-1 b {
     font-size: large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.search-box{
+.search-box {
     width: 30%;
     height: 100%;
 }
@@ -120,5 +120,4 @@ a:hover {
     .search-box {
         width: 100%;
     }
-
 }

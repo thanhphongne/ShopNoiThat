@@ -161,7 +161,6 @@ const LoginSignUp = ({ history, location }) => {
                                     value="Đăng nhập"
                                     className="loginBtn"
                                 />
-                                
                             </form>
                             <form
                                 className="signUpForm"
@@ -220,12 +219,9 @@ const LoginSignUp = ({ history, location }) => {
                                     value="Đăng ký"
                                     className="signUpBtn"
                                 />
-                                
                             </form>
                         </div>
-                        
                     </div>
-                    
                 </Fragment>
             )}
         </Fragment>

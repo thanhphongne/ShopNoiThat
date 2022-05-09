@@ -19,18 +19,18 @@ import {
     CLEAR_ERRORS,
 } from '../constants/blogConstants';
 
-// Get All Blogs 
+// Get All Blogs
 export const getAllBlogs = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_BLOG_REQUEST });
-    
-        const { data } = await axios.get("/api/v1/blogs");
-    
+
+        const { data } = await axios.get('/api/v1/blogs');
+
         dispatch({
             type: ALL_BLOG_SUCCESS,
             payload: data.blogs,
         });
-        } catch (error) {
+    } catch (error) {
         dispatch({
             type: ALL_BLOG_FAIL,
             payload: error.response.data.message,
@@ -60,17 +60,17 @@ export const getBlogDetails = (id) => async (dispatch) => {
 export const createBlog = (blogData) => async (dispatch) => {
     try {
         dispatch({ type: NEW_BLOG_REQUEST });
-        
+
         const config = {
-            headers: { "Content-Type": "application/json" },
+            headers: { 'Content-Type': 'application/json' },
         };
-    
+
         const { data } = await axios.post(
             `/api/v1/admin/blog/new`,
             blogData,
-            config
+            config,
         );
-    
+
         dispatch({
             type: NEW_BLOG_SUCCESS,
             payload: data,
@@ -80,25 +80,25 @@ export const createBlog = (blogData) => async (dispatch) => {
             type: NEW_BLOG_FAIL,
             payload: error.response.data.message,
         });
-        }
-    };
+    }
+};
 
-    // Update Product
+// Update Product
 export const updateBlog = (id, blogData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_BLOG_REQUEST });
-        
+
         const config = {
-            headers: { "Content-Type": "application/json" },
+            headers: { 'Content-Type': 'application/json' },
         };
-        
+
         const { data } = await axios.put(
             `/api/v1/admin/blog/${id}`,
             blogData,
-            config
-            );
-            
-            dispatch({
+            config,
+        );
+
+        dispatch({
             type: UPDATE_BLOG_SUCCESS,
             payload: data.success,
         });
@@ -106,28 +106,28 @@ export const updateBlog = (id, blogData) => async (dispatch) => {
         dispatch({
             type: UPDATE_BLOG_FAIL,
             payload: error.response.data.message,
-    });
+        });
     }
 };
 // Delete Product
 export const deleteBlog = (id) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_BLOG_REQUEST });
-        
+
         const { data } = await axios.delete(`/api/v1/admin/blog/${id}`);
-        
+
         dispatch({
             type: DELETE_BLOG_SUCCESS,
             payload: data.success,
         });
     } catch (error) {
-    dispatch({
-        type: DELETE_BLOG_FAIL,
-        payload: error.response.data.message,
-    });
-}
+        dispatch({
+            type: DELETE_BLOG_FAIL,
+            payload: error.response.data.message,
+        });
+    }
 };
 
 export const clearErrors = () => async (dispatch) => {
-dispatch({ type: CLEAR_ERRORS });
+    dispatch({ type: CLEAR_ERRORS });
 };

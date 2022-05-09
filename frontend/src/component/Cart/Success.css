@@ -21,7 +21,7 @@
     border: none;
     padding: 1vmax 3vmax;
     cursor: pointer;
-    font: 400 1vmax "Roboto";
+    font: 400 1vmax 'Roboto';
     text-decoration: none;
     margin: 2vmax;
     transition: all 0.5s;
@@ -32,16 +32,16 @@
 }
 @media screen and (max-width: 600px) {
     .orderSuccess > a {
-    padding: 3vw 6vw;
-    font: 400 4vw "Roboto";
-    margin: 2vmax;
+        padding: 3vw 6vw;
+        font: 400 4vw 'Roboto';
+        margin: 2vmax;
     }
 
     .orderSuccess > svg {
-    font-size: 20vw;
+        font-size: 20vw;
     }
     .orderSuccess > p {
-    margin: 2vmax;
-    font-size: 5vw;
+        margin: 2vmax;
+        font-size: 5vw;
     }
 }

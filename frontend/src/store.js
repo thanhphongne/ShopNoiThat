@@ -13,13 +13,13 @@ import {
     reviewReducer,
 } from './reducers/productReducer';
 
-import { 
+import {
     userReducer,
-    profileReducer, 
+    profileReducer,
     forgotPasswordReducer,
     allUsersReducer,
     userDetailsReducer,
-    createUserReducer
+    createUserReducer,
 } from './reducers/userReducer';
 import { cartReducer } from './reducers/cartReducer';
 import {
@@ -28,19 +28,19 @@ import {
     newOrderReducer,
     orderDetailsReducer,
     orderReducer,
-} from "./reducers/orderReducer";
+} from './reducers/orderReducer';
 import {
     billsReducer,
     newBillReducer,
     billReducer,
-    billDetailsReducer
-} from "./reducers/billReducer";
+    billDetailsReducer,
+} from './reducers/billReducer';
 import {
     blogsReducer,
     newBlogReducer,
     blogReducer,
-    blogDetailsReducer
-} from "./reducers/blogReducer";
+    blogDetailsReducer,
+} from './reducers/blogReducer';
 
 const reducer = combineReducers({
     products: productsReducer,
@@ -69,16 +69,18 @@ const reducer = combineReducers({
     blog: blogReducer,
     newBlog: newBlogReducer,
     blogDetails: blogDetailsReducer,
-    createUser: createUserReducer
+    createUser: createUserReducer,
 });
 
 let initialState = {
     cart: {
-        cartItems: localStorage.getItem('cartItems') 
-        ? JSON.parse(localStorage.getItem('cartItems'))
-        : [],
-    shippingInfo: localStorage.getItem('shippingInfo') ? JSON.parse(localStorage.getItem('shippingInfo')) :{},
-    }
+        cartItems: localStorage.getItem('cartItems')
+            ? JSON.parse(localStorage.getItem('cartItems'))
+            : [],
+        shippingInfo: localStorage.getItem('shippingInfo')
+            ? JSON.parse(localStorage.getItem('shippingInfo'))
+            : {},
+    },
 };
 
 const middleware = [thunk];

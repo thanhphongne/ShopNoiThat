@@ -10,8 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import { useAlert } from 'react-alert';
 import MetaData from '../layout/MetaData';
 
-
-
 const Products = ({ match }) => {
     const dispatch = useDispatch();
 
@@ -32,16 +30,16 @@ const Products = ({ match }) => {
     } = useSelector((state) => state.products);
 
     let categories = ['Tất cả'];
-    Allproducts && Allproducts.forEach(product => {
-        if (!categories.includes(product.category)) {
-            categories.push(product.category)
-        }
-    }
-    )
+    Allproducts &&
+        Allproducts.forEach((product) => {
+            if (!categories.includes(product.category)) {
+                categories.push(product.category);
+            }
+        });
     console.log(categories);
 
     const keyword = match.params.keyword;
-    
+
     const setCurrentPageNo = (e) => {
         setCurrentPage(e);
     };

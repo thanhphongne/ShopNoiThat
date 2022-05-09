@@ -24,112 +24,112 @@ export const billsReducer = (state = { bills: [] }, action) => {
     switch (action.type) {
         case ALL_BILL_REQUEST:
             return {
-            loading: true,
-            bills: [],
+                loading: true,
+                bills: [],
             };
         case ALL_BILL_SUCCESS:
             return {
-            loading: false,
-            bills: action.payload
+                loading: false,
+                bills: action.payload,
             };
 
         case ALL_BILL_FAIL:
             return {
-            loading: false,
-            error: action.payload,
+                loading: false,
+                error: action.payload,
             };
 
         case CLEAR_ERRORS:
             return {
-            ...state,
-            error: null,
+                ...state,
+                error: null,
             };
         default:
             return state;
-        }
+    }
 };
 
 export const newBillReducer = (state = { bill: {} }, action) => {
     switch (action.type) {
         case NEW_BILL_REQUEST:
             return {
-            ...state,
-            loading: true,
+                ...state,
+                loading: true,
             };
         case NEW_BILL_SUCCESS:
             return {
-            loading: false,
-            success: action.payload.success,
-            bill: action.payload.bill,
+                loading: false,
+                success: action.payload.success,
+                bill: action.payload.bill,
             };
         case NEW_BILL_FAIL:
             return {
-            ...state,
-            loading: false,
-            error: action.payload,
-            };
-        case NEW_BILL_RESET:
-            return {
-            ...state,
-            success: false,
-            };
-        case CLEAR_ERRORS:
-            return {
-            ...state,
-            error: null,
-            };
-        default:
-            return state;
-        }
-    };
-
-    export const billReducer = (state = {}, action) => {
-        switch (action.type) {
-            case DELETE_BILL_REQUEST:
-            case UPDATE_BILL_REQUEST:
-                return {
-                ...state,
-                loading: true,
-                };
-            case DELETE_BILL_SUCCESS:
-                return {
-                ...state,
-                loading: false,
-                isDeleted: action.payload,
-                };
-    
-            case UPDATE_BILL_SUCCESS:
-                return {
-                ...state,
-                loading: false,
-                isUpdated: action.payload,
-                };
-            case DELETE_BILL_FAIL:
-            case UPDATE_BILL_FAIL:
-                return {
                 ...state,
                 loading: false,
                 error: action.payload,
-                };
-            case DELETE_BILL_RESET:
-                return {
+            };
+        case NEW_BILL_RESET:
+            return {
                 ...state,
-                isDeleted: false,
-                };
-            case UPDATE_BILL_RESET:
-                return {
-                ...state,
-                isUpdated: false,
-                };
-            case CLEAR_ERRORS:
-                return {
+                success: false,
+            };
+        case CLEAR_ERRORS:
+            return {
                 ...state,
                 error: null,
-                };
-            default:
-                return state;
-            }
-        };
+            };
+        default:
+            return state;
+    }
+};
+
+export const billReducer = (state = {}, action) => {
+    switch (action.type) {
+        case DELETE_BILL_REQUEST:
+        case UPDATE_BILL_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
+        case DELETE_BILL_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                isDeleted: action.payload,
+            };
+
+        case UPDATE_BILL_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                isUpdated: action.payload,
+            };
+        case DELETE_BILL_FAIL:
+        case UPDATE_BILL_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+        case DELETE_BILL_RESET:
+            return {
+                ...state,
+                isDeleted: false,
+            };
+        case UPDATE_BILL_RESET:
+            return {
+                ...state,
+                isUpdated: false,
+            };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null,
+            };
+        default:
+            return state;
+    }
+};
 
 export const billDetailsReducer = (state = { bill: {} }, action) => {
     switch (action.type) {

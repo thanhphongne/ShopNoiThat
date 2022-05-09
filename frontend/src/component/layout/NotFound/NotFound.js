@@ -1,16 +1,16 @@
-import React from "react";
-import ErrorIcon from "@material-ui/icons/Error";
-import "./NotFound.css";
-import { Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import React from 'react';
+import ErrorIcon from '@material-ui/icons/Error';
+import './NotFound.css';
+import { Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
     return (
         <div className="PageNotFound">
-        <ErrorIcon />
+            <ErrorIcon />
 
-        <Typography>Trang không tồn tại!</Typography>
-        <Link to="/">Trang chủ</Link>
+            <Typography>Trang không tồn tại!</Typography>
+            <Link to="/">Trang chủ</Link>
         </div>
     );
 };

@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Rating } from "@material-ui/lab";
-
+import { Rating } from '@material-ui/lab';
 
 const ProductCard = ({ product }) => {
     const options = {
         size: 'small',
         value: product.ratings,
         readOnly: true,
-        precision:0.5,
+        precision: 0.5,
     };
 
     return (
@@ -17,7 +16,10 @@ const ProductCard = ({ product }) => {
             <p>{product.name}</p>
             <div>
                 <Rating {...options} />{' '}
-                <span className="productCardSpan"> ({product.numOfReviews} Lượt đánh giá) </span>
+                <span className="productCardSpan">
+                    {' '}
+                    ({product.numOfReviews} Lượt đánh giá){' '}
+                </span>
             </div>
             <span>{`${product.price.toLocaleString()} VND`}</span>
         </Link>

@@ -17,7 +17,7 @@
 .shippingHeading {
     text-align: center;
     color: rgba(0, 0, 0, 0.664);
-    font: 400 1.3vmax "Roboto";
+    font: 400 1.3vmax 'Roboto';
     padding: 1.3vmax;
     border-bottom: 1px solid rgba(0, 0, 0, 0.205);
     width: 50%;
@@ -25,10 +25,10 @@
 }
 h3 {
     margin-top: 30px;
-    font: 600 1.4vmax "Roboto";
+    font: 600 1.4vmax 'Roboto';
 }
 .oldAddress {
-    font: 1vw "Roboto";
+    font: 1vw 'Roboto';
     margin-top: 10px;
     width: 100%;
     padding: 0 10%;
@@ -36,7 +36,7 @@ h3 {
     border: 1px solid rgba(0, 0, 0, 0.267);
 }
 
-.shippingForm{
+.shippingForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +46,6 @@ h3 {
     height: 80%;
     transition: all 0.5s;
 }
-
 
 .shippingForm > div {
     display: flex;
@@ -77,7 +76,7 @@ h3 {
     border: none;
     background-color: rgb(3, 2, 2);
     color: white;
-    font: 300 1vmax "Roboto";
+    font: 300 1vmax 'Roboto';
     width: 100%;
     padding: 1vmax;
     cursor: pointer;
@@ -92,32 +91,32 @@ h3 {
 
 @media screen and (max-width: 600px) {
     .shippingBox {
-    width: 100vw;
-    height: 95vh;
+        width: 100vw;
+        height: 95vh;
     }
 
     .shippingHeading {
-    font: 400 6vw "Roboto";
-    padding: 5vw;
+        font: 400 6vw 'Roboto';
+        padding: 5vw;
     }
 
     .shippingForm {
-    padding: 11vw;
+        padding: 11vw;
     }
 
     .shippingForm > div > input,
     .shippingForm > div > select {
-    padding: 5vw 10vw;
-    font: 300 4vw cursive;
+        padding: 5vw 10vw;
+        font: 300 4vw cursive;
     }
 
     .shippingForm > div > svg {
-    font-size: 6vw;
-    transform: translateX(3vw);
+        font-size: 6vw;
+        transform: translateX(3vw);
     }
 
     .shippingBtn {
-    font: 300 4vw "Roboto";
-    padding: 4vw;
+        font: 300 4vw 'Roboto';
+        padding: 4vw;
     }
 }

@@ -55,8 +55,6 @@
     transition: all 0.5s;
 }
 
-
-
 .loginForm > div {
     display: flex;
     width: 100%;
@@ -72,7 +70,6 @@
     font: 300 0.9vmax cursive;
     outline: none;
 }
-
 
 .loginForm > div > svg {
     position: absolute;
@@ -93,7 +90,7 @@
     color: black;
 }
 
-.loginBtn{
+.loginBtn {
     border: none;
     background-color: black;
     color: white;
@@ -107,7 +104,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
 }
 
-.loginBtn:hover{
+.loginBtn:hover {
     background-color: black;
     color: red;
 }

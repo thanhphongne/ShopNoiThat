@@ -45,7 +45,7 @@
     width: 70%;
     padding: 1vmax 0;
 }
-.detailsBlock-2-span{
+.detailsBlock-2-span {
     font: 200 0.8vmax cursive;
     color: rgba(0, 0, 0, 0.699);
 }
@@ -179,7 +179,7 @@
 }
 .reviewCard > img {
     width: 5vmax;
-    border-radius:50%;
+    border-radius: 50%;
 }
 .reviewCard > p {
     color: rgba(0, 0, 0, 0.836);

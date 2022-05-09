@@ -9,7 +9,7 @@
 }
 
 #productListHeading {
-    font: 400 2rem "Roboto";
+    font: 400 2rem 'Roboto';
     padding: 0.5vmax;
     box-sizing: border-box;
     color: rgba(0, 0, 0, 0.637);
@@ -24,7 +24,7 @@
 }
 
 .productListTable div {
-    font: 300 1vmax "Roboto";
+    font: 300 1vmax 'Roboto';
     color: rgba(0, 0, 0, 0.678);
     border: none !important;
 }
@@ -51,10 +51,9 @@
     flex-direction: column;
     justify-content: center;
     margin-top: 20px;
-    font: 400 1.2vmax "Roboto";
-
+    font: 400 1.2vmax 'Roboto';
 }
-.order{
+.order {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -66,7 +65,6 @@
     border-radius: 10px;
     padding: 0.5vmax;
     transition: all 0.5s;
-
 }
 .order:hover {
     box-shadow: 0 0 5px rgba(15, 15, 15, 0.5);
@@ -83,12 +81,12 @@
     margin-right: 2vmax;
     transform: translateY(2px);
 }
-.orderHeading{
+.orderHeading {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    font: 400 1.2vmax "Roboto";
+    font: 400 1.2vmax 'Roboto';
     position: sticky;
     top: 20px;
     height: 40px;
@@ -118,29 +116,28 @@
 .orderProducts img {
     width: 5vmax;
 }
-.searchOrder{
+.searchOrder {
     background-color: black;
     height: 4vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font: 400 1.2vmax "Roboto";
+    font: 400 1.2vmax 'Roboto';
     border: none;
 }
-.searchOrder input{
+.searchOrder input {
     height: 90%;
     box-sizing: border-box;
     width: 20vmax;
     border: none;
 }
-.searchOrder button{
+.searchOrder button {
     height: 90%;
     box-sizing: border-box;
     border: none;
     background-color: white;
-
 }
-.searchOrderResult{
+.searchOrderResult {
     position: absolute;
     z-index: 10;
     width: 83%;
@@ -150,14 +147,14 @@
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 20px;
-    font: 400 1.2vmax "Roboto";
+    font: 400 1.2vmax 'Roboto';
     background-color: rgb(218, 218, 218);
-} 
+}
 .totalPrice {
     color: red;
 }
 @media screen and (max-width: 600px) {
     .productListTable div {
-    font: 300 4vw "Roboto";
+        font: 300 4vw 'Roboto';
     }
 }

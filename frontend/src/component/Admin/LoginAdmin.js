@@ -26,8 +26,6 @@ const LoginAdmin = ({ history, location }) => {
         dispatch(loginAdmin(loginEmail, loginPassword));
     };
 
-
-
     const redirect = location.search
         ? location.search.split('=')[1]
         : '/admin/dashboard';
@@ -43,7 +41,6 @@ const LoginAdmin = ({ history, location }) => {
         }
     }, [dispatch, error, alert, history, isAuthenticated, redirect, role]);
 
-
     return (
         <Fragment>
             {loading ? (
@@ -54,10 +51,7 @@ const LoginAdmin = ({ history, location }) => {
                         <div className="LoginSignUpBox">
                             <div>
                                 <div className="login_signUp_toggle">
-                                    <p >
-                                        ĐĂNG NHẬP QUẢN TRỊ
-                                    </p>
-                                    
+                                    <p>ĐĂNG NHẬP QUẢN TRỊ</p>
                                 </div>
                             </div>
                             <form
@@ -97,12 +91,9 @@ const LoginAdmin = ({ history, location }) => {
                                     value="Đăng nhập"
                                     className="loginBtn"
                                 />
-                                
                             </form>
                         </div>
-                        
                     </div>
-                    
                 </Fragment>
             )}
         </Fragment>

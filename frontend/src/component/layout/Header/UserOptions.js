@@ -13,8 +13,7 @@ import { logout } from '../../../actions/userAction';
 import { useDispatch, useSelector } from 'react-redux';
 
 const UserOptions = ({ user }) => {
-
-    const { cartItems } = useSelector((state) => state.cart)
+    const { cartItems } = useSelector((state) => state.cart);
     const [open, setOpen] = useState(false);
     const history = useHistory();
     const alert = useAlert();
@@ -23,7 +22,15 @@ const UserOptions = ({ user }) => {
     const options = [
         { icon: <PersonIcon />, name: 'Tôi', func: account },
         { icon: <ListAltIcon />, name: 'Đơn hàng', func: orders },
-        { icon: <ShoppingCartIcon style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}/>, name: `Giỏ hàng(${cartItems.length})`, func: cart },
+        {
+            icon: (
+                <ShoppingCartIcon
+                    style={{ color: cartItems.length > 0 ? 'tomato' : 'unset' }}
+                />
+            ),
+            name: `Giỏ hàng(${cartItems.length})`,
+            func: cart,
+        },
         { icon: <ExitToAppIcon />, name: 'Đăng  xuất', func: logoutUser },
     ];
 
@@ -33,14 +40,14 @@ const UserOptions = ({ user }) => {
             name: 'Quản trị',
             func: dashboard,
         });
-        options.splice(2,2)
+        options.splice(2, 2);
     }
     if (user.role === 'shipper') {
-        options.shift()
+        options.shift();
     }
 
     function dashboard() {
-            history.push('/admin/dashboard');
+        history.push('/admin/dashboard');
     }
     function orders() {
         history.push('/orders');

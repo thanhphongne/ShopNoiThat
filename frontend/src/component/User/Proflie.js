@@ -9,7 +9,7 @@ const Proflie = ({ history }) => {
     const { user, loading, isAuthenticated } = useSelector(
         (state) => state.user,
     );
-    const link = user.role === 'shipper' ? '/shipper/myorders' : '/orders'
+    const link = user.role === 'shipper' ? '/shipper/myorders' : '/orders';
 
     useEffect(() => {
         if (isAuthenticated === false) {

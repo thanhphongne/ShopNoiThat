@@ -26,8 +26,6 @@ const LoginShipper = ({ history, location }) => {
         dispatch(loginShipper(loginEmail, loginPassword));
     };
 
-
-
     const redirect = location.search
         ? location.search.split('=')[1]
         : '/shipper/myorders';
@@ -43,7 +41,6 @@ const LoginShipper = ({ history, location }) => {
         }
     }, [dispatch, error, alert, history, isAuthenticated, redirect, role]);
 
-
     return (
         <Fragment>
             {loading ? (
@@ -54,10 +51,7 @@ const LoginShipper = ({ history, location }) => {
                         <div className="LoginSignUpBox">
                             <div>
                                 <div className="login_signUp_toggle">
-                                    <p >
-                                        ĐĂNG NHẬP SHIPPER
-                                    </p>
-                                    
+                                    <p>ĐĂNG NHẬP SHIPPER</p>
                                 </div>
                             </div>
                             <form
@@ -97,12 +91,9 @@ const LoginShipper = ({ history, location }) => {
                                     value="Đăng nhập"
                                     className="loginBtn"
                                 />
-                                
                             </form>
                         </div>
-                        
                     </div>
-                    
                 </Fragment>
             )}
         </Fragment>

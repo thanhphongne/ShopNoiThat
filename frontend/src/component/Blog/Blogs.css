@@ -11,7 +11,7 @@
 }
 .blog {
     display: flex;
-    margin:  auto;
+    margin: auto;
     width: 80vmax;
     flex-wrap: wrap;
     justify-content: center;
@@ -46,18 +46,17 @@
 }
 .left b {
     font-size: 3vh;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .left p {
     font-size: 3vh;
-
 }
 .right {
     width: 49%;
 }
 .right img {
     width: 100%;
-
 }
 @media screen and (max-width: 600px) {
     .blog {

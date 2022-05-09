@@ -9,7 +9,7 @@
 }
 .newProductContainer h1 {
     color: rgba(0, 0, 0, 0.733);
-    font: 300 2rem "Roboto";
+    font: 300 2rem 'Roboto';
     text-align: center;
 }
 
@@ -87,7 +87,7 @@
     border: none;
     background-color: black;
     color: white;
-    font: 300 0.9vmax "Roboto";
+    font: 300 0.9vmax 'Roboto';
     width: 100%;
     padding: 0.8vmax;
     cursor: pointer;
@@ -104,35 +104,35 @@
 
 @media screen and (max-width: 600px) {
     .newProductContainer {
-    background-color: rgb(255, 255, 255);
+        background-color: rgb(255, 255, 255);
     }
     .createProductForm {
-    padding: 5vmax;
+        padding: 5vmax;
     }
 
     .createProductForm > div > input,
     .createProductForm > div > select,
     .createProductForm > div > textarea {
-    padding: 2.5vmax 5vmax;
-    font: 300 1.7vmax cursive;
+        padding: 2.5vmax 5vmax;
+        font: 300 1.7vmax cursive;
     }
 
     .createProductForm > div > svg {
-    font-size: 2.8vmax;
+        font-size: 2.8vmax;
     }
 
     #createProductFormFile > img {
-    width: 8vmax;
-    border-radius: 100%;
+        width: 8vmax;
+        border-radius: 100%;
     }
 
     #createProductFormFile > input::file-selector-button {
-    height: 7vh;
-    font: 400 1.8vmax cursive;
+        height: 7vh;
+        font: 400 1.8vmax cursive;
     }
 
     #createProductBtn {
-    font: 300 1.9vmax "Roboto";
-    padding: 1.8vmax;
+        font: 300 1.9vmax 'Roboto';
+        padding: 1.8vmax;
     }
 }

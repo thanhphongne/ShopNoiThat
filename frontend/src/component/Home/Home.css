@@ -1,6 +1,6 @@
 .banner {
-    background-image: url(../../images/homepage4.jpg) ;
-    backface-visibility:visible;
+    background-image: url(../../images/homepage4.jpg);
+    backface-visibility: visible;
     background-size: 100% 120%;
     height: 100vmin;
     display: flex;
@@ -16,7 +16,7 @@
 }
 .banner > h1 {
     margin: 5vmax;
-    font: 500 2vmax ;
+    font: 500 2vmax;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(252, 255, 240);
     text-shadow: 2px 2px 2px #000000;
@@ -70,7 +70,7 @@
 }
 .container {
     display: flex;
-    margin:  auto;
+    margin: auto;
     width: 80vmax;
     flex-wrap: wrap;
     justify-content: center;
@@ -131,7 +131,7 @@
 
 .blogs {
     display: flex;
-    margin:  auto;
+    margin: auto;
     width: 80vmax;
     flex-wrap: wrap;
     justify-content: center;
@@ -159,26 +159,23 @@
     margin-bottom: 5vh;
     border-bottom: 10px solid rgba(243, 241, 241, 0.274);
     overflow: hidden;
-    
-    
 }
 .left {
     width: 49%;
 }
 .left b {
     font-size: 3vh;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .left p {
     font-size: 1.5vh;
-
 }
 .right {
     width: 49%;
 }
 .right img {
     width: 100%;
-    
 }
 
 @media screen and (max-width: 600px) {
@@ -206,7 +203,7 @@
         margin: 0 0.5vmax;
         font: 300 1vmax 'Roboto';
     }
-    .left b{
+    .left b {
         font-size: 1vh;
     }
     .blogs {

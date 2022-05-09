@@ -7,18 +7,11 @@ import BlogCard from '../Home/BlogCard';
 import { useAlert } from 'react-alert';
 import MetaData from '../layout/MetaData';
 
-
-
 const Blogs = () => {
     const dispatch = useDispatch();
 
     const alert = useAlert();
-    const {
-        blogs,
-        loading,
-        error,
-    } = useSelector((state) => state.blogs);
-
+    const { blogs, loading, error } = useSelector((state) => state.blogs);
 
     useEffect(() => {
         if (error) {
@@ -26,13 +19,7 @@ const Blogs = () => {
             dispatch(clearErrors());
         }
         dispatch(getAllBlogs());
-    }, [
-        dispatch,
-        alert,
-        error,
-    ]);
-
-
+    }, [dispatch, alert, error]);
 
     return (
         <Fragment>
@@ -46,13 +33,9 @@ const Blogs = () => {
                     <div className="blog">
                         {blogs &&
                             blogs.map((blog, index) => (
-                                <BlogCard
-                                    blog={blog}
-                                    index={index}
-                                />
+                                <BlogCard blog={blog} index={index} />
                             ))}
                     </div>
-                    
                 </Fragment>
             )}
         </Fragment>

@@ -16,13 +16,13 @@
 
 .mailBtn > button {
     text-decoration: none;
-    font: 200 2vmax "Roboto";
-    cursor: url("https://img.icons8.com/color/48/000000/edit--v2.png"), pointer;
+    font: 200 2vmax 'Roboto';
+    cursor: url('https://img.icons8.com/color/48/000000/edit--v2.png'), pointer;
     padding: 2vmax;
 }
 
 @keyframes mailBtnAnimation {
     to {
-    transform: translateX(0);
+        transform: translateX(0);
     }
 }

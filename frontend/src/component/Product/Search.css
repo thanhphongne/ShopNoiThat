@@ -10,19 +10,19 @@
 .searchBox > input[type='text'] {
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,.03);
+    background-color: rgba(0, 0, 0, 0.03);
     box-shadow: none;
-    border-color: rgba(0,0,0,.09);
+    border-color: rgba(0, 0, 0, 0.09);
     color: currentColor !important;
     border-radius: 99px 0 0 99px;
 }
 
 .searchBox > input[type='submit'] {
-    background-color: rgba(0,0,0,.03);
+    background-color: rgba(0, 0, 0, 0.03);
     box-shadow: none;
-    border-color: rgba(0,0,0,.09);
+    border-color: rgba(0, 0, 0, 0.09);
     color: currentColor !important;
-    border-radius:0 99px 99px 0;
+    border-radius: 0 99px 99px 0;
 }
 .micro {
     width: 50px;

@@ -1,14 +1,13 @@
 import React from 'react';
-import { Rating } from "@material-ui/lab";
+import { Rating } from '@material-ui/lab';
 import profilePng from '../../images/Profile.png';
 const ReviewCard = ({ review }) => {
-    
-    const avatar = review.avatar ? review.avatar : profilePng
+    const avatar = review.avatar ? review.avatar : profilePng;
     const options = {
         size: 'large',
         value: review.rating,
         readOnly: true,
-        precision:0.5,
+        precision: 0.5,
     };
 
     return (
