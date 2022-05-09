@@ -6,7 +6,22 @@
     top: 0;
     position: absolute;
 }
+.filter{
+    width: 15%;
+    margin-left: 5vmax;
+}
+.month {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.month > p {
+    font: 300 1.2rem 'Roboto';
 
+}
+.month > div {
+    font: 300 1.2rem 'Roboto';
+}
 .dashboardContainer {
     border-left: 1px solid rgba(0, 0, 0, 0.13);
     background-color: rgb(255, 255, 255);

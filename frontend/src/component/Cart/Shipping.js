@@ -14,14 +14,13 @@ import CheckoutSteps from './CheckoutSteps';
 const Shipping = ({ history }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
-    const { shippingInfo } = useSelector((state) => state.cart);
     const { user } = useSelector((state) => state.user);
     // console.log(user.shippingInfo)
     const [isNew, setIsNew] = useState(false);
-    const [address, setAddress] = useState(shippingInfo.address);
-    const [state, setState] = useState(shippingInfo.state);
-    const [country, setCountry] = useState(shippingInfo.country);
-    const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+    const [address, setAddress] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
+    const [phoneNo, setPhoneNo] = useState('');
 
     // console.log(isNew);
     const handleSetPhoneNo = (e) => {
@@ -79,7 +78,7 @@ const Shipping = ({ history }) => {
 
                     <h3>Thông tin nhận hàng đã lưu:</h3>
 
-                    {user.shippingInfo ? (
+                    {user.shippingInfo.length > 0 ? (
                         <select
                             className="oldAddress"
                             onChange={(e) => handleOldAdress(e.target.value)}
@@ -95,7 +94,7 @@ const Shipping = ({ history }) => {
                             ))}
                         </select>
                     ) : (
-                        <h4>Không có thông tin nào được lưu</h4>
+                        <p>Không có thông tin nhận hàng nào được lưu!</p>
                     )}
                     <form
                         className="shippingForm"

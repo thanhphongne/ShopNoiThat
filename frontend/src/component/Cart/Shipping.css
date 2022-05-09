@@ -13,7 +13,11 @@
     box-sizing: border-box;
     overflow: hidden;
 }
-
+.shippingBox > p {
+    width: 100%;
+    text-align: center;
+    margin-top: 2vh;
+}
 .shippingHeading {
     text-align: center;
     color: rgba(0, 0, 0, 0.664);

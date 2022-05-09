@@ -218,7 +218,7 @@ const ProcessOrder = ({ history, match }) => {
                                             {order.orderStatus ===
                                                 'Đang giao hàng' && (
                                                 <option value="Đã nhận hàng">
-                                                    Đã nhận hàng
+                                                    Đã giao xong
                                                 </option>
                                             )}
                                         </select>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar.js';
 import './Dashboard.css';
 import { Typography } from '@material-ui/core';
@@ -22,6 +22,12 @@ const Dashboard = () => {
 
     const { bills } = useSelector((state) => state.bills);
 
+    const [month, setMonth] = useState('');
+
+    let year = month.length > 0 ? month.slice(0,4) : '';
+    let thang = month.length > 0 ? month.slice(5,7) : '';
+
+
     let outOfStock = 0;
 
     products &&
@@ -40,14 +46,34 @@ const Dashboard = () => {
 
     let totalAmount = 0;
     let totalBill = 0;
-    orders &&
+    (orders && month.length === 0) &&
         orders
             .filter((item) => item.orderStatus === 'Đã nhận hàng')
             .forEach((item) => {
                 totalAmount += item.totalPrice;
             });
-    bills &&
+
+    (orders && month.length > 0) &&
+    orders
+        .filter((item) => item.orderStatus === 'Đã nhận hàng')
+        .filter(item => (
+            item.createdAt.slice(0,4) === year
+            ))
+        .filter(item => item.createdAt.slice(5,7) === thang)
+        .forEach((item) => {
+            totalAmount += item.totalPrice;
+        });
+    (bills && month.length === 0) &&
         bills.forEach((item) => {
+            totalBill += item.total;
+        });
+    (bills && month.length > 0) &&
+        bills
+        .filter(item => (
+            item.createAt.slice(0,4) === year
+            ))
+        .filter(item => item.createAt.slice(5,7) === thang)
+        .forEach((item) => {
             totalBill += item.total;
         });
 
@@ -102,12 +128,19 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard">
-            <MetaData title="Quản Trị" />
+            <MetaData title="Thống kê" />
             <Sidebar />
 
             <div className="dashboardContainer">
-                <Typography component="h1">Quản Trị</Typography>
-
+                <Typography component="h1">Thống kê</Typography>
+                <div className="filter">
+                    <form>
+                        <div className="month">
+                            <p>Thời gian</p>
+                            <input type="month" onChange={(e) => setMonth(e.target.value)}/>
+                        </div>
+                    </form>
+                </div>
                 <div className="dashboardSummary">
                     <div>
                         <p>
@@ -115,32 +148,46 @@ const Dashboard = () => {
                             {totalAmount.toLocaleString()} VND
                         </p>
                         <p>
-                            Tổng Tiền Hàng <br />
+                            Tổng Nhập Kho <br />
                             {totalBill.toLocaleString()} VND
                         </p>
                     </div>
                     <div className="dashboardSummaryBox2">
                         <Link to="/admin/products">
                             <p>Sản Phẩm</p>
-                            <p>{products && products.length}</p>
+                            <p>{products && (month.length === 0 ? products.length : products.filter(item => (
+                                item.createAt.slice(0,4) === year
+                                ))
+                            .filter(item => item.createAt.slice(5,7) === thang).length)}</p>
                         </Link>
                         <Link to="/admin/orders">
                             <p>Đơn Hàng</p>
-                            <p>{orders && orders.length}</p>
+                            <p>{orders && (month.length === 0 ? orders.length : orders.filter(item => (
+                                item.createdAt.slice(0,4) === year
+                                ))
+                            .filter(item => item.createdAt.slice(5,7) === thang).length)}</p>
                         </Link>
                         <Link to="/admin/bills">
                             <p>Hóa đơn</p>
-                            <p>{bills && bills.length}</p>
+                            <p>{bills && (month.length === 0 ? bills.length : bills.filter(item => (
+                                item.createAt.slice(0,4) === year
+                                ))
+                            .filter(item => item.createAt.slice(5,7) === thang).length)}</p>
                         </Link>
                         <Link to="/admin/users">
                             <p>Người dùng</p>
-                            <p>{users && users.length}</p>
+                            <p>{users && (month.length === 0 ? users.length : users.filter(item => (
+                                item.createdAt.slice(0,4) === year
+                                ))
+                            .filter(item => item.createdAt.slice(5,7) === thang).length)}</p>
                         </Link>
                     </div>
                 </div>
+                
                 <div className="lineChart">
                     <Line data={lineState} />
                 </div>
+
 
                 {SaleProductNum.length > 0 && (
                     <div className="lineChart">

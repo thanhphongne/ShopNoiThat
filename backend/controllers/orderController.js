@@ -25,6 +25,9 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
         paidAt: Date.now(),
         user: req.user._id
     })
+    await order.orderItems.forEach( async (order) => {
+        await updateStock(order.product, order.quantity)
+    })
     if(shippingInfo.isNew) {
         const user = await User.findByIdAndUpdate(req.user._id, { $push:{shippingInfo: shippingInfo} })
     }
@@ -66,6 +69,9 @@ exports.cancelOrder = catchAsyncErrors( async (req, res, next) => {
         order.orderStatus = 'Đã hủy'
         order.deliveredAt = Date.now()
     }
+    order.orderItems.forEach( async (order) => {
+        await updateStockCancelOrder(order.product, order.quantity)
+    })
     
     await order.save({ validateBeforeSave: false })
     res.status(200).json({
@@ -117,11 +123,7 @@ exports.updateOrder = catchAsyncErrors( async (req, res, next) => {
         
         order.shipper = req.body.shipper;
     }
-    if(req.body.status === 'Đang giao hàng') {
-        order.orderItems.forEach( async (order) => {
-            await updateStock(order.product, order.quantity)
-        })
-    }
+    
 
     order.orderStatus = req.body.status
     order.deliveredAt = Date.now()
@@ -143,6 +145,15 @@ async function updateStock(id, quantity) {
 
     product.Stock -= quantity
     product.numOfSale += quantity
+
+    await product.save({ validateBeforeSave: false })
+}
+
+async function updateStockCancelOrder(id, quantity) {
+    const product = await Product.findById(id)
+
+    product.Stock += quantity
+    product.numOfSale -= quantity
 
     await product.save({ validateBeforeSave: false })
 }
