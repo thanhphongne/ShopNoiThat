@@ -11,6 +11,10 @@ import SpellcheckIcon from '@material-ui/icons/Spellcheck';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import SideBar from './Sidebar';
 import { NEW_BILL_RESET } from '../../constants/billConstants';
+import {
+    getAdminProduct
+} from '../../actions/productAction';
+import HomeIcon from '@material-ui/icons/Home';
 
 const NewBill = ({ history }) => {
     const dispatch = useDispatch();
@@ -20,12 +24,14 @@ const NewBill = ({ history }) => {
     const { products } = useSelector((state) => state.products);
 
     const [productId, setProductId] = useState('');
+    const [provider, setProvider] = useState('');
     const [price, setPrice] = useState(0);
     const [total, setTotal] = useState(0);
     const [Stock, setStock] = useState(0);
     // console.log(productId);
 
     useEffect(() => {
+        dispatch(getAdminProduct())
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
@@ -36,6 +42,7 @@ const NewBill = ({ history }) => {
             history.push('/admin/dashboard');
             dispatch({ type: NEW_BILL_RESET });
         }
+
     }, [dispatch, alert, error, history, success]);
 
     const createProductSubmitHandler = (e) => {
@@ -44,6 +51,7 @@ const NewBill = ({ history }) => {
         const myForm = new FormData();
 
         myForm.set('productId', productId);
+        myForm.set('provider', provider);
         myForm.set('price', price);
         myForm.set('total', total);
         myForm.set('Stock', Stock);
@@ -77,7 +85,16 @@ const NewBill = ({ history }) => {
                                 ))}
                             </select>
                         </div>
-
+                        <div>
+                            <HomeIcon />
+                            <input
+                                type="text"
+                                placeholder="Nhà cung cấp"
+                                required
+                                value={provider}
+                                onChange={(e) => setProvider(e.target.value)}
+                            />
+                        </div>
                         <div>
                             <AttachMoneyIcon />
                             <input
@@ -113,7 +130,7 @@ const NewBill = ({ history }) => {
                             type="submit"
                             disabled={loading ? true : false}
                         >
-                            Thêm hóa đơn
+                            Thêm phiếu nhập
                         </Button>
                     </form>
                 </div>

@@ -14,8 +14,8 @@
     padding: 0 5vmax;
     justify-content: center;
     min-height: 30vh;
-    width: 80vw;
-    margin-left: 10vw;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .paginationBox {

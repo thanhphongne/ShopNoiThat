@@ -162,7 +162,7 @@ const Shipping = ({ history }) => {
                             <HomeIcon />
                             <input
                                 type="text"
-                                placeholder="Địa chỉ"
+                                placeholder="Chi tiết"
                                 required
                                 value={address}
                                 onChange={(e) => handleSetAddress(e)}

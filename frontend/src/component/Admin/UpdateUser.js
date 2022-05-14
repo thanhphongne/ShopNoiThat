@@ -5,6 +5,7 @@ import { Button } from '@material-ui/core';
 import MetaData from '../layout/MetaData';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import PersonIcon from '@material-ui/icons/Person';
+import LocalPhoneIcon from '@material-ui/icons/LocalPhone';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import SideBar from './Sidebar';
 import { UPDATE_USER_RESET } from '../../constants/userConstants';
@@ -29,6 +30,7 @@ const UpdateUser = ({ history, match }) => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [phoneNo, setPhoneNo] = useState('');
     const [role, setRole] = useState('');
 
     const userId = match.params.id;
@@ -38,6 +40,7 @@ const UpdateUser = ({ history, match }) => {
             dispatch(getUserDetails(userId));
         } else {
             setName(user.name);
+            setPhoneNo(user.phoneNo)
             setEmail(user.email);
             setRole(user.role);
         }
@@ -45,10 +48,15 @@ const UpdateUser = ({ history, match }) => {
             alert.error(error);
             dispatch(clearErrors());
         }
+        
 
         if (updateError) {
             alert.error(updateError);
             dispatch(clearErrors());
+        }
+        if (phoneNo && phoneNo.length < 10) {
+            alert.error('Số điện thoại không đúng');
+            return;
         }
 
         if (isUpdated) {
@@ -56,7 +64,7 @@ const UpdateUser = ({ history, match }) => {
             history.push('/admin/users');
             dispatch({ type: UPDATE_USER_RESET });
         }
-    }, [dispatch, alert, error, history, isUpdated, updateError, user, userId]);
+    }, [dispatch, alert, error, history, isUpdated, updateError,phoneNo, user, userId]);
 
     const updateUserSubmitHandler = (e) => {
         e.preventDefault();
@@ -64,6 +72,7 @@ const UpdateUser = ({ history, match }) => {
         const myForm = new FormData();
 
         myForm.set('name', name);
+        myForm.set('phoneNo', phoneNo);
         myForm.set('email', email);
         myForm.set('role', role);
 
@@ -105,19 +114,27 @@ const UpdateUser = ({ history, match }) => {
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
-
+                            <div>
+                                <LocalPhoneIcon />
+                                <input
+                                    type="phoneNo"
+                                    placeholder="Số điện thoại"
+                                    required
+                                    value={phoneNo}
+                                    onChange={(e) => setPhoneNo(e.target.value)}
+                                />
+                            </div>
                             <div>
                                 <VerifiedUserIcon />
                                 <select
                                     value={role}
                                     onChange={(e) => setRole(e.target.value)}
                                 >
-                                    <option value="">Quyền</option>
+                                    <option value="">Vai trò</option>
                                     <option value="admin">Quản trị</option>
-                                    <option value="shipper">
-                                        Người giao hàng
-                                    </option>
-                                    <option value="user">Người dùng</option>
+                                    <option value="shipper">Người giao hàng</option>
+                                    <option value="Nhân viên bán hàng">Nhân viên bán hàng</option>
+                                    <option value="Nhân viên kho">Nhân viên kho</option>
                                 </select>
                             </div>
 

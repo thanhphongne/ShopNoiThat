@@ -225,6 +225,7 @@ const ProductDetails = ({ match }) => {
                                 cols="30"
                                 rows="5"
                                 value={comment}
+                                placeholder='Nhập đánh giá của bạn...'
                                 onChange={(e) => setComment(e.target.value)}
                             ></textarea>
                         </DialogContent>

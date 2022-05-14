@@ -6,8 +6,13 @@ const billSchema = mongoose.Schema({
         ref: "Product",
         required: true
     },
+    provider: {
+        type: String,
+        required: [true, "Nhập tên nhà cung cấp"],
+    },
     price: {
         type: Number,
+        required: [true, "Nhập giá nhập sản phẩm"],
         default: 0
     },
     Stock: {
@@ -20,7 +25,6 @@ const billSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-
     user: {
         type: mongoose.Schema.ObjectId,
         ref: "User",

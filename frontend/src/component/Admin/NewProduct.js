@@ -110,7 +110,7 @@ const NewProduct = ({ history }) => {
                             <HomeIcon />
                             <input
                                 type="text"
-                                placeholder="Nhà cung cấp"
+                                placeholder="Thương hiệu"
                                 required
                                 value={supplier}
                                 onChange={(e) => setSupplier(e.target.value)}

@@ -28,10 +28,10 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 })
 
 exports.createUser = catchAsyncErrors(async (req, res, next) => {
-    const {name, email, password, role} = req.body
+    const {name, email, phoneNo, password, role} = req.body
     
     const user = await User.create({
-        name, email, password, role,
+        name, email, phoneNo, password, role,
         avatar: {
             public_id: "profile",
             url: "/Profile.png",
@@ -313,10 +313,10 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
 
     const newUserData = {
         name: req.body.name,
+        phoneNo: req.body.phoneNo,
         email: req.body.email,
         role: req.body.role
     }
-    // i will update avt later :))
 
     const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
         new: true,

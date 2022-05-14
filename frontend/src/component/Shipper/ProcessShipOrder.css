@@ -1,3 +1,9 @@
+.shippingContainner{
+    width: 100%;
+}
+.ShippingArea{
+    width: 100%;
+}
 .updateOrderForm {
     margin: 5vmax 0;
     padding: 3vmax;

@@ -142,6 +142,7 @@
 .submitDialog {
     display: flex;
     flex-direction: column;
+    width: 30vmax;
 }
 .submitDialogTextArea {
     border: 1px solid rgba(0, 0, 0, 0.082);

@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
         minLength: [8, 'Nên đặt mật khẩu từ 8 ký tự'],
         select: false
     },
+    phoneNo: {
+        type: String,
+        required: [true, 'Nhập số điện thoại'],
+        unique: true,
+        },
     avatar: {
         public_id: {
             type: String,

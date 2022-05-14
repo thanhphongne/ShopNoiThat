@@ -60,8 +60,7 @@ const ProcessOrder = ({ history, match }) => {
     return (
         <Fragment>
             <MetaData title="Xử lý đơn hàng" />
-            <div className="dashboard">
-                <div className="newProductContainer">
+                <div className="newShippingContainer">
                     {loading ? (
                         <Loader />
                     ) : (
@@ -74,8 +73,8 @@ const ProcessOrder = ({ history, match }) => {
                                         : 'grid',
                             }}
                         >
-                            <div>
-                                <div className="confirmshippingArea">
+                            <div className='shippingContainner'>
+                                <div className="ShippingArea">
                                     <Typography>Thông tin nhận hàng</Typography>
                                     <div className="orderDetailsContainerBox">
                                         <div>
@@ -241,7 +240,6 @@ const ProcessOrder = ({ history, match }) => {
                         </div>
                     )}
                 </div>
-            </div>
         </Fragment>
     );
 };

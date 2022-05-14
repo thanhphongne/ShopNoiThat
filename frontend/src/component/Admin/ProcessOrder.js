@@ -125,7 +125,8 @@ const ProcessOrder = ({ match }) => {
                                                             order.shipper,
                                                     )
                                                     .map((user) => (
-                                                        <p>{user.name}</p>
+                                                        <div>
+                                                        <p>{user.name}</p></div>
                                                     ))}
                                             </div>
                                         </Fragment>
@@ -244,7 +245,7 @@ const ProcessOrder = ({ match }) => {
                                                 setStatus(e.target.value)
                                             }
                                         >
-                                            <option value="">Hành động</option>
+                                            <option value="Chờ lấy hàng">Trạng thái</option>
                                             {order.orderStatus ===
                                                 'Chờ xác nhận' && (
                                                 <option value="Chờ lấy hàng">

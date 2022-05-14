@@ -6,6 +6,7 @@ const catchAsyncErrors = require('../middleware/catchAsyncErrors')
 exports.newBill = catchAsyncErrors(async (req, res, next) => {
     const {
         productId,
+        provider,
         price,
         Stock,
         total
@@ -13,6 +14,7 @@ exports.newBill = catchAsyncErrors(async (req, res, next) => {
 
     const bill = await Bill.create({
         productId,
+        provider,
         price,
         Stock,
         total,
