@@ -39,7 +39,7 @@ const NewBill = ({ history }) => {
 
         if (success) {
             alert.success('Đã nhập hóa đơn');
-            history.push('/admin/dashboard');
+            history.push('/admin/bills');
             dispatch({ type: NEW_BILL_RESET });
         }
 

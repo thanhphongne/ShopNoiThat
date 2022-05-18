@@ -169,6 +169,7 @@ const ProcessOrder = ({ history, match }) => {
                                                         src={item.image}
                                                         alt="Product"
                                                     />
+                                                    <div className='Details'>
                                                     <Link
                                                         to={`/product/${item.product}`}
                                                     >
@@ -186,6 +187,7 @@ const ProcessOrder = ({ history, match }) => {
                                                             VND
                                                         </b>
                                                     </span>
+                                                    </div>
                                                 </div>
                                             ))}
                                     </div>
@@ -204,36 +206,14 @@ const ProcessOrder = ({ history, match }) => {
                                     className="updateOrderForm"
                                     onSubmit={updateOrderSubmitHandler}
                                 >
-                                    <h1>Xử lý đơn hàng</h1>
-
-                                    <div>
-                                        <AccountTreeIcon />
-                                        <select
-                                            onChange={(e) =>
-                                                setStatus(e.target.value)
-                                            }
-                                        >
-                                            <option value="">Hành động</option>
-                                            {order.orderStatus ===
-                                                'Đang giao hàng' && (
-                                                <option value="Đã nhận hàng">
-                                                    Đã giao xong
-                                                </option>
-                                            )}
-                                        </select>
-                                    </div>
+                                    
                                     <Button
                                         id="createProductBtn"
                                         type="submit"
-                                        disabled={
-                                            loading
-                                                ? true
-                                                : false || status === ''
-                                                ? true
-                                                : false
-                                        }
+                                        onClick={()=> {setStatus('Đã nhận hàng')}}
+                                        
                                     >
-                                        Xử lý
+                                        Đã giao xong
                                     </Button>
                                 </form>
                             </div>

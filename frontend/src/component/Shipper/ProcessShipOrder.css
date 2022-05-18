@@ -3,11 +3,13 @@
 }
 .ShippingArea{
     width: 100%;
+    box-sizing: border-box;
+    padding: 2%;
 }
 .updateOrderForm {
-    margin: 5vmax 0;
     padding: 3vmax;
     background-color: white;
+    box-sizing: border-box;
 }
 
 .updateOrderForm > div {
@@ -35,7 +37,7 @@
 
 @media screen and (max-width: 600px) {
     .updateOrderForm {
-        padding: 5vmax;
+        padding: 0 2vmax ;
     }
 
     .updateOrderForm > div > select {
@@ -45,5 +47,11 @@
 
     .updateOrderForm > div > svg {
         font-size: 2.8vmax;
+    }
+    .Details{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 2%;
     }
 }

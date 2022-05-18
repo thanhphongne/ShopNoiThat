@@ -27,7 +27,6 @@ const NewProduct = ({ history }) => {
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
-    const [Stock, setStock] = useState(0);
     const [images, setImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -54,7 +53,6 @@ const NewProduct = ({ history }) => {
         myForm.set('price', price);
         myForm.set('description', description);
         myForm.set('category', category);
-        myForm.set('Stock', Stock);
 
         images.forEach((image) => {
             myForm.append('images', image);
@@ -120,7 +118,7 @@ const NewProduct = ({ history }) => {
                             <AttachMoneyIcon />
                             <input
                                 type="number"
-                                placeholder="Giá"
+                                placeholder="Giá bán ra"
                                 required
                                 onChange={(e) => setPrice(e.target.value)}
                             />
@@ -146,16 +144,6 @@ const NewProduct = ({ history }) => {
                                 required
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
-                            />
-                        </div>
-
-                        <div>
-                            <StorageIcon />
-                            <input
-                                type="number"
-                                placeholder="Số lượng"
-                                required
-                                onChange={(e) => setStock(e.target.value)}
                             />
                         </div>
 

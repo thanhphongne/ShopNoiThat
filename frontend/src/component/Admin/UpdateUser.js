@@ -92,7 +92,7 @@ const UpdateUser = ({ history, match }) => {
                             className="createProductForm"
                             onSubmit={updateUserSubmitHandler}
                         >
-                            <h1>Cập nhật người dùng</h1>
+                            <h1>Cập nhật nhân viên</h1>
 
                             <div>
                                 <PersonIcon />

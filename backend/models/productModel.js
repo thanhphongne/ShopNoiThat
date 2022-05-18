@@ -32,7 +32,7 @@ const productSchema = mongoose.Schema({
     ],
     supplier: {
         type: String,
-        required: [true, "Nhập tên nhà cung cấp"]
+        required: [true, "Nhập tên nhà thương hiệu"]
     },
     category: {
         type: String,
@@ -46,7 +46,6 @@ const productSchema = mongoose.Schema({
     },
     numOfSale: {
         type: Number,
-        maxLength: [4, 'Số lượng không được vượt quá 4 chữ số'],
         default: 0
     },
     numOfReviews: {
