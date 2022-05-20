@@ -9,12 +9,14 @@ import PersonIcon from '@material-ui/icons/Person';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import SideBar from './Sidebar';
 import { createUser, clearErrors } from '../../actions/userAction';
+import Loader from '../layout/Loader/Loader';
+
 
 const CreateUser = ({ history, match }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
 
-    const { error, isCreated } = useSelector((state) => state.createUser);
+    const { error, isCreated, loading } = useSelector((state) => state.createUser);
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -63,7 +65,9 @@ const CreateUser = ({ history, match }) => {
             <MetaData title="Tạo người dùng" />
             <div className="dashboard">
                 <SideBar />
-                <div className="newProductContainer">
+                {loading ? (
+                    <Loader />
+                ) :(<div className="newProductContainer">
                     <form
                         className="createProductForm"
                         onSubmit={updateUserSubmitHandler}
@@ -123,7 +127,7 @@ const CreateUser = ({ history, match }) => {
                             Tạo
                         </Button>
                     </form>
-                </div>
+                </div>)}
             </div>
         </Fragment>
     );

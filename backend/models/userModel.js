@@ -25,7 +25,6 @@ const userSchema = new mongoose.Schema({
     },
     phoneNo: {
         type: String,
-        required: [true, 'Nhập số điện thoại'],
         unique: true,
         },
     avatar: {

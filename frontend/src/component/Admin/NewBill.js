@@ -14,6 +14,7 @@ import { NEW_BILL_RESET } from '../../constants/billConstants';
 import {
     getAdminProduct
 } from '../../actions/productAction';
+import Loader from '../layout/Loader/Loader';
 import HomeIcon from '@material-ui/icons/Home';
 
 const NewBill = ({ history }) => {
@@ -64,7 +65,9 @@ const NewBill = ({ history }) => {
             <MetaData title="Nhập hóa đơn" />
             <div className="dashboard">
                 <SideBar />
-                <div className="newProductContainer">
+                {loading ? (
+                    <Loader />
+                ) :(<div className="newProductContainer">
                     <form
                         className="createProductForm"
                         encType="multipart/form-data"
@@ -133,7 +136,7 @@ const NewBill = ({ history }) => {
                             Thêm phiếu nhập
                         </Button>
                     </form>
-                </div>
+                </div>)}
             </div>
         </Fragment>
     );

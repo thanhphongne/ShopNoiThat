@@ -91,7 +91,7 @@ const BillList = ({ history }) => {
         {
             field: 'date',
             headerName: 'Ngày nhập',
-            type: 'datetime',
+            type: 'string',
             minWidth: 100,
             flex: 0.3,
         },

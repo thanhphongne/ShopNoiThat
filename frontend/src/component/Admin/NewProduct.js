@@ -12,6 +12,7 @@ import SpellcheckIcon from '@material-ui/icons/Spellcheck';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import HomeIcon from '@material-ui/icons/Home';
 import SideBar from './Sidebar';
+import Loader from '../layout/Loader/Loader';
 import { NEW_PRODUCT_RESET } from '../../constants/productConstants';
 
 const NewProduct = ({ history }) => {
@@ -24,6 +25,7 @@ const NewProduct = ({ history }) => {
 
     const [name, setName] = useState('');
     const [supplier, setSupplier] = useState('');
+    const [Stock, setStock] = useState(0);
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
@@ -49,6 +51,7 @@ const NewProduct = ({ history }) => {
         const myForm = new FormData();
 
         myForm.set('name', name);
+        myForm.set('Stock', Stock);
         myForm.set('supplier', supplier);
         myForm.set('price', price);
         myForm.set('description', description);
@@ -85,7 +88,9 @@ const NewProduct = ({ history }) => {
             <MetaData title="Thêm sản phẩm mới" />
             <div className="dashboard">
                 <SideBar />
-                <div className="newProductContainer">
+                {loading ? (
+                    <Loader />
+                ) :(<div className="newProductContainer">
                     <form
                         className="createProductForm"
                         encType="multipart/form-data"
@@ -101,6 +106,15 @@ const NewProduct = ({ history }) => {
                                 required
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <StorageIcon />
+                            <input
+                                type="number"
+                                placeholder="Số lượng"
+                                required
+                                onChange={(e) => setStock(e.target.value)}
                             />
                         </div>
 
@@ -175,7 +189,7 @@ const NewProduct = ({ history }) => {
                             Thêm sản phẩm
                         </Button>
                     </form>
-                </div>
+                </div>)}
             </div>
         </Fragment>
     );

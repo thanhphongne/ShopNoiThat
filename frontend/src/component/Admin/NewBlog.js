@@ -9,12 +9,14 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import SpellcheckIcon from '@material-ui/icons/Spellcheck';
 import SideBar from './Sidebar';
 import { NEW_BLOG_RESET } from '../../constants/blogConstants';
+import Loader from '../layout/Loader/Loader';
+
 
 const NewBlog = ({ history }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
 
-    const { loading, error, success } = useSelector((state) => state.blog);
+    const { loading, error, success } = useSelector((state) => state.newBlog);
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -72,7 +74,9 @@ const NewBlog = ({ history }) => {
             <MetaData title="Thêm bài viết mới" />
             <div className="dashboard">
                 <SideBar />
-                <div className="newProductContainer">
+                {loading ? (
+                    <Loader />
+                ) :(<div className="newProductContainer">
                     <form
                         className="createProductForm"
                         encType="multipart/form-data"
@@ -131,7 +135,7 @@ const NewBlog = ({ history }) => {
                             Đăng bài viết
                         </Button>
                     </form>
-                </div>
+                </div>)}
             </div>
         </Fragment>
     );

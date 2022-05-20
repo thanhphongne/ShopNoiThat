@@ -48,7 +48,7 @@ export const blogsReducer = (state = { blogs: [] }, action) => {
             return state;
     }
 };
-export const newBlogReducer = (state = { blog: {} }, action) => {
+export const newBlogReducer = (state = {}, action) => {
     switch (action.type) {
         case NEW_BLOG_REQUEST:
             return {

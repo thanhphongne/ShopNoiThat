@@ -4,13 +4,7 @@ const catchAsyncErrors = require('../middleware/catchAsyncErrors')
 const Product = require('../models/productModel')
 
 
-async function updateStock(id, quantity) {
-    const product = await Product.findById(id)
 
-    product.Stock += Number(quantity)
-
-    await product.save({ validateBeforeSave: false })
-}
 //create bill
 exports.newBill = catchAsyncErrors(async (req, res, next) => {
     const {
@@ -20,8 +14,6 @@ exports.newBill = catchAsyncErrors(async (req, res, next) => {
         Stock,
         total
     } = req.body
-
-    await updateStock(productId, Stock)
 
     const bill = await Bill.create({
         productId,

@@ -12,6 +12,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SideBar from './Sidebar';
 import { DELETE_BLOG_RESET } from '../../constants/blogConstants';
+import Loader from '../layout/Loader/Loader';
+
 
 const BlogsList = ({ history }) => {
     const dispatch = useDispatch();
@@ -19,7 +21,7 @@ const BlogsList = ({ history }) => {
     const alert = useAlert();
 
     const { users } = useSelector((state) => state.allUsers);
-    const { error, blogs } = useSelector((state) => state.blogs);
+    const { error, blogs, loading } = useSelector((state) => state.blogs);
 
     const { error: deleteError, isDeleted } = useSelector(
         (state) => state.blog,
@@ -41,7 +43,7 @@ const BlogsList = ({ history }) => {
         }
 
         if (isDeleted) {
-            alert.success('Đã xóa hóa đơn');
+            alert.success('Đã xóa bài viết');
             history.push('/admin/blogs');
             dispatch({ type: DELETE_BLOG_RESET });
         }
@@ -68,7 +70,7 @@ const BlogsList = ({ history }) => {
         {
             field: 'date',
             headerName: 'Ngày tạo',
-            type: 'datetime',
+            type: 'string',
             minWidth: 100,
             flex: 0.2,
         },
@@ -128,7 +130,9 @@ const BlogsList = ({ history }) => {
 
             <div className="dashboard">
                 <SideBar />
-                <div className="productListContainer">
+                {loading ? (
+                    <Loader />
+                ) :(<div className="productListContainer">
                     <h1 id="productListHeading">Tất cả bài viết</h1>
                     <DataGrid
                         rows={rows}
@@ -138,7 +142,7 @@ const BlogsList = ({ history }) => {
                         className="productListTable"
                         autoHeight
                     />
-                </div>
+                </div>)}
             </div>
         </Fragment>
     );

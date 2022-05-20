@@ -187,7 +187,7 @@ const ProductDetails = ({ match }) => {
                                     >
                                         {product.Stock < 1
                                             ? 'Hết hàng'
-                                            : 'Còn hàng'}
+                                            : `Còn ${product.Stock} sản phẩm`}
                                     </b>
                                 </p>
                             </div>
